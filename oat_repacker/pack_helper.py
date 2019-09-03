@@ -6,12 +6,12 @@ import os
 import lief.OAT
 import struct
 import re
-
+import env
 
 def unpack_apk(apk_path, output_dir):
     logger.info(f"unpack apk {apk_path} to {output_dir}:")
     try:
-        cmd = f".\\apktool\\apktool.bat d -r -s -m -o {output_dir} {apk_path} "
+        cmd = f"{env.JAVAPATH} -jar {env.APKTOOL} d -r -s -m -o {output_dir} {apk_path} "
         subprocess.check_call(cmd, shell=True)
     except Exception as e:
         logger.error(e)
@@ -31,7 +31,7 @@ def dex2smali(unpack_dir, output_dir):
                 dex_path = os.path.join(unpack_dir, file)
                 smali_path = os.path.join(output_dir, "smali" + dex_id)
                 try:
-                    cmd = f"java -jar ./smali/baksmali-2.2.7.jar d {dex_path} -o {smali_path} --pr false"
+                    cmd = f"{env.JAVAPATH} -jar {env.BAKSMALIPATH} d {dex_path} -o {smali_path} --pr false"
                     subprocess.check_call(cmd, shell=True)
                     # os.chmod(smali_path, 0o777)
                     # cmd = f"icacls {smali_path} /Q /T /grant Everyone:F"
@@ -52,22 +52,25 @@ def smali2dex(smali_dir, unpack_dir):
                 logger.info(f"overwrite dex {outdex}")
                 if os.path.exists(outdex):
                     os.remove(outdex)
-                cmd = f"java -jar ../smali/smali/build/libs/smali-2.2.7-76867f0a-dirty-fat.jar a -a 25 -o {outdex} {os.path.join(smali_dir, file)}"
+                cmd = f"{env.JAVAPATH} -jar {env.SMALIPATH} a -a 25 -o {outdex} {os.path.join(smali_dir, file)}"
                 subprocess.check_call(cmd, shell=True)
             except Exception as e:
                 logger.error(e)
 
 
-def repack_apk(unpack_dir, output_apk):
+def repack_apk(unpack_dir, output_apk = None):
+    if not output_apk:
+        output_apk = os.path.join(env.TMPPATH, os.path.basename(unpack_dir) + "_signed.apk")
     logger.info(f"repack {unpack_dir} to {output_apk}:")
-    repack_apk_path = "./tmp/" + os.path.basename(unpack_dir) + ".apk"
+    repack_apk_path = os.path.join(env.TMPPATH, os.path.basename(unpack_dir) + ".apk")
     if os.path.exists(repack_apk_path):
         os.remove(repack_apk_path)
     try:
-        repackcmd = f".\\apktool\\apktool.bat b {unpack_dir} -o {repack_apk_path}"
+        repackcmd = f"{env.JAVAPATH} -jar {env.APKTOOL} b {unpack_dir} -o {repack_apk_path}"
         subprocess.check_call(repackcmd, shell=True)
-        signcmd = f"jarsigner -verbose -keystore demo.keystore -signedjar {output_apk} -storepass 123456 {repack_apk_path} demo.keystore"
+        signcmd = f"{env.JAVAPATH} -jar {env.SIGNERPATH} {env.SIGNKEYPATH}.x509.pem {env.SIGNKEYPATH}.pk8 {repack_apk_path} {output_apk}"
         subprocess.check_call(signcmd, shell=True)
+        return output_apk
     except Exception as e:
         logger.error(e)
 
@@ -101,10 +104,12 @@ def replace_odex_checksum_enter(origin_odex_path, payload_odex_path):
     origin_odex = lief.OAT.parse(origin_odex_path)
     payload_odex = lief.OAT.parse(payload_odex_path)
     replace_odex_checksum(origin_odex, payload_odex)
-    logger.info(f"save patched odex file to {payload_odex_path}")
-    if os.path.exists(payload_odex_path + ".patched"):
-        os.remove(payload_odex_path + ".patched")
-    payload_odex.write(payload_odex_path + ".patched")
+    patched_odex_path = payload_odex_path + ".patched"
+    logger.info(f"save patched odex file to {patched_odex_path}")
+    if os.path.exists(patched_odex_path):
+        os.remove(patched_odex_path)
+    payload_odex.write(patched_odex_path)
+    return patched_odex_path
 
 
 def replace_odex_checksum(origin_odex, payload_odex):
@@ -116,10 +121,16 @@ def replace_odex_checksum(origin_odex, payload_odex):
         payload_checksum_offset = payload_odex_checksum_set[key][0]
         payload_odex.patch_address(payload_checksum_offset, origin_checksum)
 
+def apk2smali(origin_apk_file, output_dir=None):
+    if not output_dir:
+        output_dir = os.path.join(env.TMPPATH, os.path.splitext(os.path.basename(origin_apk_file))[0])
+    unpack_apk(origin_apk_file, output_dir)
+    smali_dir = os.path.realpath(output_dir)+"_smali"
+    dex2smali(output_dir, smali_dir)
+    return output_dir, smali_dir
+    
 def main():
     origin_apk_file = sys.argv[1]
-    pass
-
 
 if __name__ == '__main__':
     # main()

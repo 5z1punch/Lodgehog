@@ -1,0 +1,1 @@
+JDK 8 is recommended. Later versions may is incompatible with this signapk.jar . You can replace it by yourself.

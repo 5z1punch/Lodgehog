@@ -1,8 +1,7 @@
 import os
 from adb_controller import adb
 from loguru import logger
-
-opt_tmp = os.path.join(os.path.dirname(os.path.realpath(__file__)),"tmp")
+import env
 
 def init_vm_env():
     status, exec_ret = adb.exec_shell("getprop dalvik.vm.usejit")
@@ -21,7 +20,7 @@ def deploy_app(apk_path, package_name):
             app_dir = exec_ret.strip()
         elif not status or exec_ret.strip()=="":
             logger.error(f"can't find {package_name} app dir")
-            return False
+            return None
         for i in range(2):
             status, exec_ret = adb.exec_shell(f"find {app_dir}/oat/ -name base.odex")
             if status:
@@ -32,7 +31,8 @@ def deploy_app(apk_path, package_name):
                     adb.oat_compile(package_name)
                 else:
                     logger.error(f"can't complile oat for {package_name}")
-                    return False
-        if adb.pull_file(oat_path, os.path.join(opt_tmp, "origin.odex")):
-            return True
-    return False
+                    return None
+        local_odex = os.path.join(env.TMPPATH, "origin.odex")
+        if adb.pull_file(oat_path, local_odex):
+            return app_dir, oat_path, local_odex
+    return None
