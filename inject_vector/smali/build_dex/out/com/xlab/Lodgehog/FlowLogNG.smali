@@ -1,4 +1,4 @@
-.class public LFlowLogNG;
+.class public Lcom/xlab/Lodgehog/FlowLogNG;
 .super Ljava/lang/Object;
 .source "FlowLogNG.java"
 
@@ -28,29 +28,29 @@
     .registers 1
 
     .prologue
-    .line 13
+    .line 14
     const-string v0, "flowLogNG/"
 
-    sput-object v0, LFlowLogNG;->logDir:Ljava/lang/String;
-
-    .line 14
-    const/4 v0, 0x0
-
-    sput-boolean v0, LFlowLogNG;->logFlag:Z
+    sput-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
 
     .line 15
+    const/4 v0, 0x0
+
+    sput-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
+
+    .line 16
     invoke-static {}, Landroid/os/Process;->myPid()I
 
     move-result v0
 
-    sput v0, LFlowLogNG;->pid:I
+    sput v0, Lcom/xlab/Lodgehog/FlowLogNG;->pid:I
 
-    .line 16
+    .line 17
     new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
 
-    sput-object v0, LFlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    sput-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
     return-void
 .end method
@@ -59,7 +59,7 @@
     .registers 1
 
     .prologue
-    .line 12
+    .line 13
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -69,8 +69,8 @@
     .registers 3
 
     .prologue
-    .line 100
-    sget-object v0, LFlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    .line 101
+    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-virtual {v0}, Ljava/util/concurrent/ConcurrentHashMap;->values()Ljava/util/Collection;
 
@@ -93,7 +93,7 @@
 
     check-cast v0, Ljava/io/FileOutputStream;
 
-    .line 102
+    .line 103
     :try_start_16
     invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
     :try_end_19
@@ -101,11 +101,11 @@
 
     goto :goto_a
 
-    .line 103
+    .line 104
     :catch_1a
     move-exception v0
 
-    .line 105
+    .line 106
     const-string v0, "FlowLog"
 
     const-string v2, "IOException when closs a FOS"
@@ -114,7 +114,7 @@
 
     goto :goto_a
 
-    .line 108
+    .line 109
     :cond_23
     return-void
 .end method
@@ -123,8 +123,8 @@
     .registers 3
 
     .prologue
-    .line 110
-    sget-object v0, LFlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    .line 111
+    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-virtual {v0}, Ljava/util/concurrent/ConcurrentHashMap;->values()Ljava/util/Collection;
 
@@ -147,7 +147,7 @@
 
     check-cast v0, Ljava/io/FileOutputStream;
 
-    .line 112
+    .line 113
     :try_start_16
     invoke-virtual {v0}, Ljava/io/FileOutputStream;->flush()V
     :try_end_19
@@ -155,11 +155,11 @@
 
     goto :goto_a
 
-    .line 113
+    .line 114
     :catch_1a
     move-exception v0
 
-    .line 115
+    .line 116
     const-string v0, "FlowLog"
 
     const-string v2, "IOException when flush a FOS"
@@ -168,7 +168,7 @@
 
     goto :goto_a
 
-    .line 118
+    .line 119
     :cond_23
     return-void
 .end method
@@ -177,8 +177,8 @@
     .registers 1
 
     .prologue
-    .line 18
-    sget-object v0, LFlowLogNG;->logDir:Ljava/lang/String;
+    .line 19
+    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
 
     return-object v0
 .end method
@@ -187,76 +187,70 @@
     .registers 1
 
     .prologue
-    .line 24
-    sget-boolean v0, LFlowLogNG;->logFlag:Z
+    .line 25
+    sget-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
 
     return v0
 .end method
 
 .method public static varargs log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
-    .registers 12
+    .registers 11
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    .line 48
-    sget-boolean v1, LFlowLogNG;->logFlag:Z
+    .line 49
+    sget-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
 
-    if-nez v1, :cond_6
+    if-nez v0, :cond_6
 
-    .line 98
+    .line 99
     :goto_5
     return-void
 
-    .line 52
+    .line 53
     :cond_6
     :try_start_6
     invoke-static {}, Landroid/os/Process;->myTid()I
 
-    move-result v3
+    move-result v2
 
-    .line 53
-    new-instance v1, Ljava/lang/StringBuilder;
+    .line 54
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v0
 
-    const-string v2, "("
+    const-string v3, "("
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 55
+    const-string v0, ""
+
+    .line 56
+    invoke-static {p1}, Lcom/xlab/Lodgehog/FlowLogNG;->obj2String(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v4
 
-    .line 54
-    const-string v1, ""
-
-    .line 55
-    invoke-static {p1}, LFlowLogNG;->obj2String(Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v5
-
-    .line 56
-    array-length v6, p2
-
-    move v8, v0
-
-    move-object v0, v1
-
-    move v1, v8
-
-    :goto_27
-    if-ge v1, v6, :cond_4b
-
-    aget-object v2, p2, v1
-
     .line 57
+    array-length v5, p2
+
+    :goto_24
+    if-ge v1, v5, :cond_46
+
+    aget-object v6, p2, v1
+
+    .line 58
     new-instance v7, Ljava/lang/StringBuilder;
 
     invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
@@ -265,61 +259,57 @@
 
     move-result-object v0
 
-    invoke-static {v2}, LFlowLogNG;->obj2String(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v6}, Lcom/xlab/Lodgehog/FlowLogNG;->obj2String(Ljava/lang/Object;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v6
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v2, ", "
+    const-string v6, ", "
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v0
 
-    .line 56
-    add-int/lit8 v0, v1, 0x1
+    .line 57
+    add-int/lit8 v1, v1, 0x1
 
-    move v1, v0
+    goto :goto_24
 
-    move-object v0, v2
-
-    goto :goto_27
-
-    .line 59
-    :cond_4b
+    .line 60
+    :cond_46
     invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
 
     move-result v1
 
-    if-nez v1, :cond_5c
+    if-nez v1, :cond_57
 
-    .line 60
+    .line 61
     const/4 v1, 0x0
 
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
-    move-result v2
+    move-result v5
 
-    add-int/lit8 v2, v2, -0x2
+    add-int/lit8 v5, v5, -0x2
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    invoke-virtual {v0, v1, v5}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 62
-    :cond_5c
+    .line 63
+    :cond_57
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -333,7 +323,7 @@
 
     move-result-object v0
 
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
@@ -347,23 +337,23 @@
 
     move-result-object v1
 
-    .line 63
-    sget-object v0, LFlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    .line 64
+    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v0, v2}, Ljava/util/concurrent/ConcurrentHashMap;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v3}, Ljava/util/concurrent/ConcurrentHashMap;->containsKey(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_b9
+    if-eqz v0, :cond_b4
 
-    .line 65
-    sget-object v0, LFlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    .line 66
+    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v2
 
@@ -373,48 +363,48 @@
 
     check-cast v0, Ljava/io/FileOutputStream;
 
-    .line 66
+    .line 67
     invoke-virtual {v1}, Ljava/lang/String;->getBytes()[B
-    :try_end_98
-    .catch Ljava/lang/Throwable; {:try_start_6 .. :try_end_98} :catch_ad
+    :try_end_93
+    .catch Ljava/lang/Throwable; {:try_start_6 .. :try_end_93} :catch_a8
 
     move-result-object v2
 
-    .line 69
-    :try_start_99
+    .line 70
+    :try_start_94
     invoke-virtual {v0, v2}, Ljava/io/FileOutputStream;->write([B)V
-    :try_end_9c
-    .catch Ljava/io/IOException; {:try_start_99 .. :try_end_9c} :catch_9e
-    .catch Ljava/lang/Throwable; {:try_start_99 .. :try_end_9c} :catch_ad
+    :try_end_97
+    .catch Ljava/io/IOException; {:try_start_94 .. :try_end_97} :catch_99
+    .catch Ljava/lang/Throwable; {:try_start_94 .. :try_end_97} :catch_a8
 
     goto/16 :goto_5
 
-    .line 70
-    :catch_9e
+    .line 71
+    :catch_99
     move-exception v0
 
-    .line 71
-    :try_start_9f
+    .line 72
+    :try_start_9a
     const-string v0, "FlowLog"
 
     const-string v2, "IOException when write a FOS "
 
     invoke-static {v0, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 72
+    .line 73
     const-string v0, "FlowLog"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_ab
-    .catch Ljava/lang/Throwable; {:try_start_9f .. :try_end_ab} :catch_ad
+    :try_end_a6
+    .catch Ljava/lang/Throwable; {:try_start_9a .. :try_end_a6} :catch_a8
 
     goto/16 :goto_5
 
-    .line 95
-    :catch_ad
+    .line 96
+    :catch_a8
     move-exception v0
 
-    .line 96
+    .line 97
     const-string v1, "FlowLog.log"
 
     invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
@@ -425,27 +415,27 @@
 
     goto/16 :goto_5
 
-    .line 76
-    :cond_b9
-    :try_start_b9
+    .line 77
+    :cond_b4
+    :try_start_b4
     invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
 
     move-result-object v0
 
-    .line 77
-    new-instance v2, Ljava/io/File;
+    .line 78
+    new-instance v3, Ljava/io/File;
 
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    sget-object v5, LFlowLogNG;->logDir:Ljava/lang/String;
+    sget-object v5, Lcom/xlab/Lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    sget v5, LFlowLogNG;->pid:I
+    sget v5, Lcom/xlab/Lodgehog/FlowLogNG;->pid:I
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -457,7 +447,7 @@
 
     move-result-object v4
 
-    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
@@ -471,66 +461,66 @@
 
     move-result-object v4
 
-    invoke-direct {v2, v0, v4}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-    :try_end_e7
-    .catch Ljava/lang/Throwable; {:try_start_b9 .. :try_end_e7} :catch_ad
+    invoke-direct {v3, v0, v4}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+    :try_end_e2
+    .catch Ljava/lang/Throwable; {:try_start_b4 .. :try_end_e2} :catch_a8
 
-    .line 79
-    :try_start_e7
+    .line 80
+    :try_start_e2
     new-instance v0, Ljava/io/FileOutputStream;
 
-    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
     move-result-object v4
 
     invoke-direct {v0, v4}, Ljava/io/FileOutputStream;-><init>(Ljava/lang/String;)V
 
-    .line 80
-    sget-object v4, LFlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
-
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-virtual {v4, v3, v0}, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
     .line 81
-    invoke-virtual {v1}, Ljava/lang/String;->getBytes()[B
+    sget-object v4, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
-    move-result-object v3
-
-    .line 83
-    invoke-virtual {v0, v3}, Ljava/io/FileOutputStream;->write([B)V
-    :try_end_100
-    .catch Ljava/io/FileNotFoundException; {:try_start_e7 .. :try_end_100} :catch_102
-    .catch Ljava/io/IOException; {:try_start_e7 .. :try_end_100} :catch_126
-    .catch Ljava/lang/Throwable; {:try_start_e7 .. :try_end_100} :catch_ad
-
-    goto/16 :goto_5
-
-    .line 84
-    :catch_102
-    move-exception v0
-
-    .line 86
-    :try_start_103
-    const-string v0, "FlowLog"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "FileNotFoundException when open "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v2
 
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v2, v0}, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 82
+    invoke-virtual {v1}, Ljava/lang/String;->getBytes()[B
+
+    move-result-object v2
+
+    .line 84
+    invoke-virtual {v0, v2}, Ljava/io/FileOutputStream;->write([B)V
+    :try_end_fb
+    .catch Ljava/io/FileNotFoundException; {:try_start_e2 .. :try_end_fb} :catch_fd
+    .catch Ljava/io/IOException; {:try_start_e2 .. :try_end_fb} :catch_121
+    .catch Ljava/lang/Throwable; {:try_start_e2 .. :try_end_fb} :catch_a8
+
+    goto/16 :goto_5
+
+    .line 85
+    :catch_fd
+    move-exception v0
+
+    .line 87
+    :try_start_fe
+    const-string v0, "FlowLog"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "FileNotFoundException when open "
+
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v3}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
@@ -540,50 +530,50 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 87
+    .line 88
     const-string v0, "FlowLog"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     goto/16 :goto_5
 
-    .line 88
-    :catch_126
+    .line 89
+    :catch_121
     move-exception v0
-
-    .line 90
-    const-string v0, "FlowLog"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "IOException when write "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v0, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 91
     const-string v0, "FlowLog"
 
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "IOException when write "
+
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v3}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 92
+    const-string v0, "FlowLog"
+
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_148
-    .catch Ljava/lang/Throwable; {:try_start_103 .. :try_end_148} :catch_ad
+    :try_end_143
+    .catch Ljava/lang/Throwable; {:try_start_fe .. :try_end_143} :catch_a8
 
     goto/16 :goto_5
 .end method
@@ -592,20 +582,20 @@
     .registers 4
 
     .prologue
-    .line 33
+    .line 34
     const-string v0, ""
 
-    .line 34
+    .line 35
     if-nez p0, :cond_7
 
-    .line 35
+    .line 36
     const-string v0, "null@192e8asj"
 
-    .line 45
+    .line 46
     :goto_6
     return-object v0
 
-    .line 39
+    .line 40
     :cond_7
     :try_start_7
     invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
@@ -616,11 +606,11 @@
 
     goto :goto_6
 
-    .line 41
+    .line 42
     :catch_c
     move-exception v0
 
-    .line 42
+    .line 43
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -656,10 +646,10 @@
     .registers 1
 
     .prologue
-    .line 21
-    sput-object p0, LFlowLogNG;->logDir:Ljava/lang/String;
-
     .line 22
+    sput-object p0, Lcom/xlab/Lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
+
+    .line 23
     return-void
 .end method
 
@@ -667,12 +657,12 @@
     .registers 1
 
     .prologue
-    .line 27
+    .line 28
     const/4 v0, 0x1
 
-    sput-boolean v0, LFlowLogNG;->logFlag:Z
+    sput-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
 
-    .line 28
+    .line 29
     return-void
 .end method
 
@@ -680,11 +670,11 @@
     .registers 1
 
     .prologue
-    .line 30
+    .line 31
     const/4 v0, 0x0
 
-    sput-boolean v0, LFlowLogNG;->logFlag:Z
+    sput-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
 
-    .line 31
+    .line 32
     return-void
 .end method

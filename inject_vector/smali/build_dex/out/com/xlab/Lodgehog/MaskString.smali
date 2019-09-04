@@ -1,4 +1,4 @@
-.class public final LMaskString;
+.class public final Lcom/xlab/Lodgehog/MaskString;
 .super Ljava/lang/Object;
 .source "MaskString.java"
 
@@ -8,7 +8,7 @@
     .registers 1
 
     .prologue
-    .line 1
+    .line 2
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -18,12 +18,12 @@
     .registers 8
 
     .prologue
-    .line 13
+    .line 14
     invoke-virtual {p0, p1}, Ljava/lang/String;->charAt(I)C
 
     move-result v0
 
-    .line 14
+    .line 15
     const-string v1, "String.charAt"
 
     invoke-static {v0}, Ljava/lang/Character;->valueOf(C)Ljava/lang/Character;
@@ -46,9 +46,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 15
+    .line 16
     return v0
 .end method
 
@@ -56,12 +56,12 @@
     .registers 8
 
     .prologue
-    .line 18
+    .line 19
     invoke-virtual {p0, p1}, Ljava/lang/String;->codePointAt(I)I
 
     move-result v0
 
-    .line 19
+    .line 20
     const-string v1, "String.codePointAt"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -84,9 +84,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 20
+    .line 21
     return v0
 .end method
 
@@ -94,12 +94,12 @@
     .registers 8
 
     .prologue
-    .line 23
+    .line 24
     invoke-virtual {p0, p1}, Ljava/lang/String;->codePointBefore(I)I
 
     move-result v0
 
-    .line 24
+    .line 25
     const-string v1, "String.codePointBefore"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -122,9 +122,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 25
+    .line 26
     return v0
 .end method
 
@@ -132,12 +132,12 @@
     .registers 9
 
     .prologue
-    .line 28
+    .line 29
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->codePointCount(II)I
 
     move-result v0
 
-    .line 29
+    .line 30
     const-string v1, "String.codePointCount"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -168,9 +168,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 30
+    .line 31
     return v0
 .end method
 
@@ -178,7 +178,7 @@
     .registers 7
 
     .prologue
-    .line 336
+    .line 337
     move-object v0, p1
 
     check-cast v0, Ljava/lang/String;
@@ -187,7 +187,7 @@
 
     move-result v0
 
-    .line 337
+    .line 338
     const-string v1, "String.compareTo"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -206,9 +206,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 338
+    .line 339
     return v0
 .end method
 
@@ -216,12 +216,12 @@
     .registers 7
 
     .prologue
-    .line 81
+    .line 82
     invoke-virtual {p0, p1}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
 
     move-result v0
 
-    .line 82
+    .line 83
     const-string v1, "String.compareTo"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -240,9 +240,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 83
+    .line 84
     return v0
 .end method
 
@@ -250,12 +250,12 @@
     .registers 7
 
     .prologue
-    .line 86
+    .line 87
     invoke-virtual {p0, p1}, Ljava/lang/String;->compareToIgnoreCase(Ljava/lang/String;)I
 
     move-result v0
 
-    .line 87
+    .line 88
     const-string v1, "String.compareToIgnoreCase"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -274,9 +274,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 88
+    .line 89
     return v0
 .end method
 
@@ -284,12 +284,12 @@
     .registers 6
 
     .prologue
-    .line 176
+    .line 177
     invoke-virtual {p0, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 177
+    .line 178
     const-string v1, "String.concat"
 
     const/4 v2, 0x2
@@ -304,9 +304,9 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 178
+    .line 179
     return-object v0
 .end method
 
@@ -314,12 +314,12 @@
     .registers 7
 
     .prologue
-    .line 191
+    .line 192
     invoke-virtual {p0, p1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     move-result v0
 
-    .line 192
+    .line 193
     const-string v1, "String.contains"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -338,9 +338,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 193
+    .line 194
     return v0
 .end method
 
@@ -348,12 +348,12 @@
     .registers 7
 
     .prologue
-    .line 71
+    .line 72
     invoke-virtual {p0, p1}, Ljava/lang/String;->contentEquals(Ljava/lang/CharSequence;)Z
 
     move-result v0
 
-    .line 72
+    .line 73
     const-string v1, "String.contentEquals"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -372,9 +372,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 73
+    .line 74
     return v0
 .end method
 
@@ -382,12 +382,12 @@
     .registers 7
 
     .prologue
-    .line 66
+    .line 67
     invoke-virtual {p0, p1}, Ljava/lang/String;->contentEquals(Ljava/lang/StringBuffer;)Z
 
     move-result v0
 
-    .line 67
+    .line 68
     const-string v1, "String.contentEquals"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -406,9 +406,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 68
+    .line 69
     return v0
 .end method
 
@@ -416,12 +416,12 @@
     .registers 5
 
     .prologue
-    .line 296
+    .line 297
     invoke-static {p0}, Ljava/lang/String;->copyValueOf([C)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 297
+    .line 298
     const-string v1, "String.copyValueOf"
 
     const/4 v2, 0x1
@@ -432,9 +432,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 298
+    .line 299
     return-object v0
 .end method
 
@@ -442,12 +442,12 @@
     .registers 8
 
     .prologue
-    .line 291
+    .line 292
     invoke-static {p0, p1, p2}, Ljava/lang/String;->copyValueOf([CII)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 292
+    .line 293
     const-string v1, "String.copyValueOf"
 
     const/4 v2, 0x3
@@ -474,9 +474,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 293
+    .line 294
     return-object v0
 .end method
 
@@ -484,12 +484,12 @@
     .registers 7
 
     .prologue
-    .line 111
+    .line 112
     invoke-virtual {p0, p1}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
 
     move-result v0
 
-    .line 112
+    .line 113
     const-string v1, "String.endsWith"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -508,9 +508,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 113
+    .line 114
     return v0
 .end method
 
@@ -518,12 +518,12 @@
     .registers 7
 
     .prologue
-    .line 61
+    .line 62
     invoke-virtual {p0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    .line 62
+    .line 63
     const-string v1, "String.equals"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -542,9 +542,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 63
+    .line 64
     return v0
 .end method
 
@@ -552,12 +552,12 @@
     .registers 7
 
     .prologue
-    .line 76
+    .line 77
     invoke-virtual {p0, p1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v0
 
-    .line 77
+    .line 78
     const-string v1, "String.equalsIgnoreCase"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -576,9 +576,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 78
+    .line 79
     return v0
 .end method
 
@@ -586,12 +586,12 @@
     .registers 6
 
     .prologue
-    .line 266
+    .line 267
     invoke-static {p0, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 267
+    .line 268
     const-string v1, "String.format"
 
     const/4 v2, 0x2
@@ -606,9 +606,9 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 268
+    .line 269
     return-object v0
 .end method
 
@@ -616,12 +616,12 @@
     .registers 7
 
     .prologue
-    .line 271
+    .line 272
     invoke-static {p0, p1, p2}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 272
+    .line 273
     const-string v1, "String.format"
 
     const/4 v2, 0x3
@@ -640,9 +640,9 @@
 
     aput-object p2, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 273
+    .line 274
     return-object v0
 .end method
 
@@ -650,10 +650,10 @@
     .registers 10
 
     .prologue
-    .line 42
+    .line 43
     invoke-virtual {p0, p1, p2, p3, p4}, Ljava/lang/String;->getBytes(II[BI)V
 
-    .line 43
+    .line 44
     const-string v0, "String.getBytes"
 
     const-string v1, "__VOID__"
@@ -694,9 +694,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v0, v1, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v0, v1, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 44
+    .line 45
     return-void
 .end method
 
@@ -704,12 +704,12 @@
     .registers 5
 
     .prologue
-    .line 56
+    .line 57
     invoke-virtual {p0}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v0
 
-    .line 57
+    .line 58
     const-string v1, "String.getBytes"
 
     const/4 v2, 0x1
@@ -720,9 +720,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 58
+    .line 59
     return-object v0
 .end method
 
@@ -735,12 +735,12 @@
     .end annotation
 
     .prologue
-    .line 46
+    .line 47
     invoke-virtual {p0, p1}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
 
     move-result-object v0
 
-    .line 47
+    .line 48
     const-string v1, "String.getBytes"
 
     const/4 v2, 0x2
@@ -755,9 +755,9 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 48
+    .line 49
     return-object v0
 .end method
 
@@ -765,12 +765,12 @@
     .registers 6
 
     .prologue
-    .line 51
+    .line 52
     invoke-virtual {p0, p1}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
 
     move-result-object v0
 
-    .line 52
+    .line 53
     const-string v1, "String.getBytes"
 
     const/4 v2, 0x2
@@ -785,9 +785,9 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 53
+    .line 54
     return-object v0
 .end method
 
@@ -795,10 +795,10 @@
     .registers 10
 
     .prologue
-    .line 38
+    .line 39
     invoke-virtual {p0, p1, p2, p3, p4}, Ljava/lang/String;->getChars(II[CI)V
 
-    .line 39
+    .line 40
     const-string v0, "String.getChars"
 
     const-string v1, "__VOID__"
@@ -839,9 +839,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v0, v1, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v0, v1, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 40
+    .line 41
     return-void
 .end method
 
@@ -849,12 +849,12 @@
     .registers 6
 
     .prologue
-    .line 116
+    .line 117
     invoke-virtual {p0}, Ljava/lang/String;->hashCode()I
 
     move-result v0
 
-    .line 117
+    .line 118
     const-string v1, "String.hashCode"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -869,9 +869,9 @@
 
     aput-object p0, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 118
+    .line 119
     return v0
 .end method
 
@@ -879,12 +879,12 @@
     .registers 8
 
     .prologue
-    .line 121
+    .line 122
     invoke-virtual {p0, p1}, Ljava/lang/String;->indexOf(I)I
 
     move-result v0
 
-    .line 122
+    .line 123
     const-string v1, "String.indexOf"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -907,9 +907,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 123
+    .line 124
     return v0
 .end method
 
@@ -917,12 +917,12 @@
     .registers 9
 
     .prologue
-    .line 126
+    .line 127
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->indexOf(II)I
 
     move-result v0
 
-    .line 127
+    .line 128
     const-string v1, "String.indexOf"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -953,9 +953,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 128
+    .line 129
     return v0
 .end method
 
@@ -963,12 +963,12 @@
     .registers 7
 
     .prologue
-    .line 141
+    .line 142
     invoke-virtual {p0, p1}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
 
     move-result v0
 
-    .line 142
+    .line 143
     const-string v1, "String.indexOf"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -987,9 +987,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 143
+    .line 144
     return v0
 .end method
 
@@ -997,12 +997,12 @@
     .registers 9
 
     .prologue
-    .line 146
+    .line 147
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->indexOf(Ljava/lang/String;I)I
 
     move-result v0
 
-    .line 147
+    .line 148
     const-string v1, "String.indexOf"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1029,9 +1029,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 148
+    .line 149
     return v0
 .end method
 
@@ -1039,12 +1039,12 @@
     .registers 5
 
     .prologue
-    .line 331
+    .line 332
     invoke-virtual {p0}, Ljava/lang/String;->intern()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 332
+    .line 333
     const-string v1, "String.intern"
 
     const/4 v2, 0x1
@@ -1055,9 +1055,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 333
+    .line 334
     return-object v0
 .end method
 
@@ -1065,12 +1065,12 @@
     .registers 6
 
     .prologue
-    .line 8
+    .line 9
     invoke-virtual {p0}, Ljava/lang/String;->isEmpty()Z
 
     move-result v0
 
-    .line 9
+    .line 10
     const-string v1, "String.isEmpty"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -1085,9 +1085,9 @@
 
     aput-object p0, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 10
+    .line 11
     return v0
 .end method
 
@@ -1106,12 +1106,12 @@
     .end annotation
 
     .prologue
-    .line 226
+    .line 227
     invoke-static {p0, p1}, Ljava/lang/String;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 227
+    .line 228
     const-string v1, "String.join"
 
     const/4 v2, 0x2
@@ -1126,9 +1126,9 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 228
+    .line 229
     return-object v0
 .end method
 
@@ -1136,12 +1136,12 @@
     .registers 6
 
     .prologue
-    .line 221
+    .line 222
     invoke-static {p0, p1}, Ljava/lang/String;->join(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 222
+    .line 223
     const-string v1, "String.join"
 
     const/4 v2, 0x2
@@ -1156,9 +1156,9 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 223
+    .line 224
     return-object v0
 .end method
 
@@ -1166,12 +1166,12 @@
     .registers 8
 
     .prologue
-    .line 131
+    .line 132
     invoke-virtual {p0, p1}, Ljava/lang/String;->lastIndexOf(I)I
 
     move-result v0
 
-    .line 132
+    .line 133
     const-string v1, "String.lastIndexOf"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1194,9 +1194,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 133
+    .line 134
     return v0
 .end method
 
@@ -1204,12 +1204,12 @@
     .registers 9
 
     .prologue
-    .line 136
+    .line 137
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->lastIndexOf(II)I
 
     move-result v0
 
-    .line 137
+    .line 138
     const-string v1, "String.lastIndexOf"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1240,9 +1240,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 138
+    .line 139
     return v0
 .end method
 
@@ -1250,12 +1250,12 @@
     .registers 7
 
     .prologue
-    .line 151
+    .line 152
     invoke-virtual {p0, p1}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
 
     move-result v0
 
-    .line 152
+    .line 153
     const-string v1, "String.lastIndexOf"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1274,9 +1274,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 153
+    .line 154
     return v0
 .end method
 
@@ -1284,12 +1284,12 @@
     .registers 9
 
     .prologue
-    .line 156
+    .line 157
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;I)I
 
     move-result v0
 
-    .line 157
+    .line 158
     const-string v1, "String.lastIndexOf"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1316,9 +1316,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 158
+    .line 159
     return v0
 .end method
 
@@ -1326,12 +1326,12 @@
     .registers 6
 
     .prologue
-    .line 3
+    .line 4
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
 
-    .line 4
+    .line 5
     const-string v1, "String.length"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1346,9 +1346,9 @@
 
     aput-object p0, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 5
+    .line 6
     return v0
 .end method
 
@@ -1356,12 +1356,12 @@
     .registers 7
 
     .prologue
-    .line 186
+    .line 187
     invoke-virtual {p0, p1}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
 
     move-result v0
 
-    .line 187
+    .line 188
     const-string v1, "String.matches"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -1380,9 +1380,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 188
+    .line 189
     return v0
 .end method
 
@@ -1390,12 +1390,12 @@
     .registers 9
 
     .prologue
-    .line 33
+    .line 34
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->offsetByCodePoints(II)I
 
     move-result v0
 
-    .line 34
+    .line 35
     const-string v1, "String.offsetByCodePoints"
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1426,9 +1426,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 35
+    .line 36
     return v0
 .end method
 
@@ -1436,12 +1436,12 @@
     .registers 11
 
     .prologue
-    .line 91
+    .line 92
     invoke-virtual {p0, p1, p2, p3, p4}, Ljava/lang/String;->regionMatches(ILjava/lang/String;II)Z
 
     move-result v0
 
-    .line 92
+    .line 93
     const-string v1, "String.regionMatches"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -1484,9 +1484,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 93
+    .line 94
     return v0
 .end method
 
@@ -1494,12 +1494,12 @@
     .registers 12
 
     .prologue
-    .line 96
+    .line 97
     invoke-virtual/range {p0 .. p5}, Ljava/lang/String;->regionMatches(ZILjava/lang/String;II)Z
 
     move-result v0
 
-    .line 97
+    .line 98
     const-string v1, "String.regionMatches"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -1550,9 +1550,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 98
+    .line 99
     return v0
 .end method
 
@@ -1560,12 +1560,12 @@
     .registers 8
 
     .prologue
-    .line 181
+    .line 182
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->replace(CC)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 182
+    .line 183
     const-string v1, "String.replace"
 
     const/4 v2, 0x3
@@ -1592,9 +1592,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 183
+    .line 184
     return-object v0
 .end method
 
@@ -1602,12 +1602,12 @@
     .registers 7
 
     .prologue
-    .line 206
+    .line 207
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 207
+    .line 208
     const-string v1, "String.replace"
 
     const/4 v2, 0x3
@@ -1626,9 +1626,9 @@
 
     aput-object p2, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 208
+    .line 209
     return-object v0
 .end method
 
@@ -1636,12 +1636,12 @@
     .registers 7
 
     .prologue
-    .line 201
+    .line 202
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 202
+    .line 203
     const-string v1, "String.replaceAll"
 
     const/4 v2, 0x3
@@ -1660,9 +1660,9 @@
 
     aput-object p2, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 203
+    .line 204
     return-object v0
 .end method
 
@@ -1670,12 +1670,12 @@
     .registers 7
 
     .prologue
-    .line 196
+    .line 197
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->replaceFirst(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 197
+    .line 198
     const-string v1, "String.replaceFirst"
 
     const/4 v2, 0x3
@@ -1694,9 +1694,9 @@
 
     aput-object p2, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 198
+    .line 199
     return-object v0
 .end method
 
@@ -1704,12 +1704,12 @@
     .registers 6
 
     .prologue
-    .line 216
+    .line 217
     invoke-virtual {p0, p1}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
 
     move-result-object v0
 
-    .line 217
+    .line 218
     const-string v1, "String.split"
 
     const/4 v2, 0x2
@@ -1724,9 +1724,9 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 218
+    .line 219
     return-object v0
 .end method
 
@@ -1734,12 +1734,12 @@
     .registers 8
 
     .prologue
-    .line 211
+    .line 212
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->split(Ljava/lang/String;I)[Ljava/lang/String;
 
     move-result-object v0
 
-    .line 212
+    .line 213
     const-string v1, "String.split"
 
     const/4 v2, 0x3
@@ -1762,9 +1762,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 213
+    .line 214
     return-object v0
 .end method
 
@@ -1772,12 +1772,12 @@
     .registers 7
 
     .prologue
-    .line 106
+    .line 107
     invoke-virtual {p0, p1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
     move-result v0
 
-    .line 107
+    .line 108
     const-string v1, "String.startsWith"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -1796,9 +1796,9 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 108
+    .line 109
     return v0
 .end method
 
@@ -1806,12 +1806,12 @@
     .registers 9
 
     .prologue
-    .line 101
+    .line 102
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->startsWith(Ljava/lang/String;I)Z
 
     move-result v0
 
-    .line 102
+    .line 103
     const-string v1, "String.startsWith"
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
@@ -1838,9 +1838,9 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 103
+    .line 104
     return v0
 .end method
 
@@ -1848,12 +1848,12 @@
     .registers 8
 
     .prologue
-    .line 171
+    .line 172
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->subSequence(II)Ljava/lang/CharSequence;
 
     move-result-object v0
 
-    .line 172
+    .line 173
     const-string v1, "String.subSequence"
 
     const/4 v2, 0x3
@@ -1880,9 +1880,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 173
+    .line 174
     return-object v0
 .end method
 
@@ -1890,12 +1890,12 @@
     .registers 7
 
     .prologue
-    .line 161
+    .line 162
     invoke-virtual {p0, p1}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 162
+    .line 163
     const-string v1, "String.substring"
 
     const/4 v2, 0x2
@@ -1914,9 +1914,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 163
+    .line 164
     return-object v0
 .end method
 
@@ -1924,12 +1924,12 @@
     .registers 8
 
     .prologue
-    .line 166
+    .line 167
     invoke-virtual {p0, p1, p2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 167
+    .line 168
     const-string v1, "String.substring"
 
     const/4 v2, 0x3
@@ -1956,9 +1956,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 168
+    .line 169
     return-object v0
 .end method
 
@@ -1966,12 +1966,12 @@
     .registers 5
 
     .prologue
-    .line 261
+    .line 262
     invoke-virtual {p0}, Ljava/lang/String;->toCharArray()[C
 
     move-result-object v0
 
-    .line 262
+    .line 263
     const-string v1, "String.toCharArray"
 
     const/4 v2, 0x1
@@ -1982,9 +1982,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 263
+    .line 264
     return-object v0
 .end method
 
@@ -1992,12 +1992,12 @@
     .registers 5
 
     .prologue
-    .line 236
+    .line 237
     invoke-virtual {p0}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 237
+    .line 238
     const-string v1, "String.toLowerCase"
 
     const/4 v2, 0x1
@@ -2008,9 +2008,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 238
+    .line 239
     return-object v0
 .end method
 
@@ -2018,12 +2018,12 @@
     .registers 6
 
     .prologue
-    .line 231
+    .line 232
     invoke-virtual {p0, p1}, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 232
+    .line 233
     const-string v1, "String.toLowerCase"
 
     const/4 v2, 0x2
@@ -2038,9 +2038,9 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 233
+    .line 234
     return-object v0
 .end method
 
@@ -2048,12 +2048,12 @@
     .registers 5
 
     .prologue
-    .line 256
+    .line 257
     invoke-virtual {p0}, Ljava/lang/String;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 257
+    .line 258
     const-string v1, "String.toString"
 
     const/4 v2, 0x1
@@ -2064,9 +2064,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 258
+    .line 259
     return-object v0
 .end method
 
@@ -2074,12 +2074,12 @@
     .registers 5
 
     .prologue
-    .line 246
+    .line 247
     invoke-virtual {p0}, Ljava/lang/String;->toUpperCase()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 247
+    .line 248
     const-string v1, "String.toUpperCase"
 
     const/4 v2, 0x1
@@ -2090,9 +2090,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 248
+    .line 249
     return-object v0
 .end method
 
@@ -2100,12 +2100,12 @@
     .registers 6
 
     .prologue
-    .line 241
+    .line 242
     invoke-virtual {p0, p1}, Ljava/lang/String;->toUpperCase(Ljava/util/Locale;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 242
+    .line 243
     const-string v1, "String.toUpperCase"
 
     const/4 v2, 0x2
@@ -2120,9 +2120,9 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 243
+    .line 244
     return-object v0
 .end method
 
@@ -2130,12 +2130,12 @@
     .registers 5
 
     .prologue
-    .line 251
+    .line 252
     invoke-virtual {p0}, Ljava/lang/String;->trim()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 252
+    .line 253
     const-string v1, "String.trim"
 
     const/4 v2, 0x1
@@ -2146,9 +2146,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 253
+    .line 254
     return-object v0
 .end method
 
@@ -2156,12 +2156,12 @@
     .registers 6
 
     .prologue
-    .line 306
+    .line 307
     invoke-static {p0}, Ljava/lang/String;->valueOf(C)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 307
+    .line 308
     const-string v1, "String.valueOf"
 
     const/4 v2, 0x1
@@ -2176,9 +2176,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 308
+    .line 309
     return-object v0
 .end method
 
@@ -2186,12 +2186,12 @@
     .registers 8
 
     .prologue
-    .line 326
+    .line 327
     invoke-static {p0, p1}, Ljava/lang/String;->valueOf(D)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 327
+    .line 328
     const-string v1, "String.valueOf"
 
     const/4 v2, 0x1
@@ -2206,9 +2206,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 328
+    .line 329
     return-object v0
 .end method
 
@@ -2216,12 +2216,12 @@
     .registers 6
 
     .prologue
-    .line 321
+    .line 322
     invoke-static {p0}, Ljava/lang/String;->valueOf(F)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 322
+    .line 323
     const-string v1, "String.valueOf"
 
     const/4 v2, 0x1
@@ -2236,9 +2236,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 323
+    .line 324
     return-object v0
 .end method
 
@@ -2246,12 +2246,12 @@
     .registers 6
 
     .prologue
-    .line 311
+    .line 312
     invoke-static {p0}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 312
+    .line 313
     const-string v1, "String.valueOf"
 
     const/4 v2, 0x1
@@ -2266,9 +2266,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 313
+    .line 314
     return-object v0
 .end method
 
@@ -2276,12 +2276,12 @@
     .registers 8
 
     .prologue
-    .line 316
+    .line 317
     invoke-static {p0, p1}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 317
+    .line 318
     const-string v1, "String.valueOf"
 
     const/4 v2, 0x1
@@ -2296,9 +2296,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 318
+    .line 319
     return-object v0
 .end method
 
@@ -2306,12 +2306,12 @@
     .registers 5
 
     .prologue
-    .line 276
+    .line 277
     invoke-static {p0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 277
+    .line 278
     const-string v1, "String.valueOf"
 
     const/4 v2, 0x1
@@ -2322,9 +2322,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 278
+    .line 279
     return-object v0
 .end method
 
@@ -2332,12 +2332,12 @@
     .registers 6
 
     .prologue
-    .line 301
+    .line 302
     invoke-static {p0}, Ljava/lang/String;->valueOf(Z)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 302
+    .line 303
     const-string v1, "String.valueOf"
 
     const/4 v2, 0x1
@@ -2352,9 +2352,9 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 303
+    .line 304
     return-object v0
 .end method
 
@@ -2362,12 +2362,12 @@
     .registers 5
 
     .prologue
-    .line 281
+    .line 282
     invoke-static {p0}, Ljava/lang/String;->valueOf([C)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 282
+    .line 283
     const-string v1, "String.valueOf"
 
     const/4 v2, 0x1
@@ -2378,9 +2378,9 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 283
+    .line 284
     return-object v0
 .end method
 
@@ -2388,12 +2388,12 @@
     .registers 8
 
     .prologue
-    .line 286
+    .line 287
     invoke-static {p0, p1, p2}, Ljava/lang/String;->valueOf([CII)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 287
+    .line 288
     const-string v1, "String.valueOf"
 
     const/4 v2, 0x3
@@ -2420,8 +2420,8 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, LFlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
-    .line 288
+    .line 289
     return-object v0
 .end method

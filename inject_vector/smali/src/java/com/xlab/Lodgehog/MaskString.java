@@ -1,3 +1,4 @@
+package com.xlab.Lodgehog;
 public final class MaskString {
     public static int length(java.lang.String argThis)  {
         int returnV = argThis.length();
