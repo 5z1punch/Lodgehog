@@ -24,7 +24,8 @@ def get_repack_odex(oat_path, package_name, output_path):
 def replace_base_odex(oat_path, app_dir, repack_oat):
     if adb.push_file(repack_oat):
         repack_odex_remote = '/sdcard/'+os.path.basename(repack_oat)
-        if adb.exec_shell(f"mv {repack_odex_remote} {oat_path}")[0]:
+        if adb.exec_shell(f"cp {repack_odex_remote} {oat_path}")[0]:
+            adb.exec_shell(f"rm {repack_odex_remote}")
             # recover base.apk
             if adb.exec_shell(f"mv {app_dir}/base.apk.bak {app_dir}/base.apk")[0]:
                 return True

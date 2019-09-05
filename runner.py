@@ -16,7 +16,7 @@ def main():
     # AXML parser & get target_java_packages
     pass
     # inject log
-    target_java_packages = []
+    target_java_packages = ["com.xlab.forkprocesstest"]
     repack_smali_dir = smali_dir + "_repack"
     if injector.DEBUG:
         if os.path.exists(repack_smali_dir):
@@ -29,7 +29,7 @@ def main():
     # init android env
     init.init_vm_env()
     app_dir, oat_path, origin_odex = init.deploy_app(apk_path, package_name)
-    oat_opt.inject_oat(app_dir, oat_path, package_name, output_apk, origin_odex)    
+    oat_opt.inject_oat(app_dir, oat_path, package_name, output_apk, origin_odex)
 
 if __name__ == '__main__':
     main()

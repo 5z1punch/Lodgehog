@@ -32,6 +32,6 @@ def install(apk_path):
 
 def oat_compile(package_name, mode="reset"):
     if mode=="reset":
-        return run_opt("oat_compile", [ADB, "shell", "cmd", "package", "compile", "--reset", package_name])[0]
+        return run_opt("oat_compile", [ADB, "shell", "su", "-c" ,f"cmd package compile --reset {package_name}"])[0]
     else:
-        return run_opt("oat_compile",[ADB, "shell", "cmd", "package", "compile", "-m", mode, "-f", "-c", package_name])[0]
+        return run_opt("oat_compile",[ADB, "shell", "su", "-c", f"cmd package compile -m {mode} -f -c {package_name}"])[0]

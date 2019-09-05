@@ -1,7 +1,7 @@
 import os
 
 # base
-BASEPATH = os.path.realpath(__file__)
+BASEPATH = os.path.dirname(os.path.realpath(__file__))
 JAVAPATH = "java"
 TMPPATH = os.path.join(BASEPATH, "tmp")
 

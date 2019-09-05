@@ -116,7 +116,7 @@ def replace_odex_checksum(origin_odex, payload_odex):
     logger.info(f"patch checksum of {payload_odex.name}")
     origin_odex_checksum_set = parse_oat_for_odex_checksum(origin_odex)
     payload_odex_checksum_set = parse_oat_for_odex_checksum(payload_odex)
-    for key in payload_odex_checksum_set:
+    for key in origin_odex_checksum_set:
         origin_checksum = origin_odex_checksum_set[key][1]
         payload_checksum_offset = payload_odex_checksum_set[key][0]
         payload_odex.patch_address(payload_checksum_offset, origin_checksum)

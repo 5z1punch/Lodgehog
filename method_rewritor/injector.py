@@ -5,6 +5,7 @@ import sys
 
 from method_rewritor.invoke_opt import rewriteStringInvoke, rewriteMapInvoke
 from loguru import logger
+import env
 
 DEBUG = True
 
@@ -53,7 +54,6 @@ def injectPackageInMulDex(decomDir, packageNameList, outputDir, mergeLater=False
         subDirList.append(packageName.replace(".", os.sep))
     smaliDirs = []
     changedSmaliDirs = []
-    injectLogSmali = False
     for file in os.listdir(decomDir):
         if file.startswith("smali") and os.path.isdir(os.path.join(decomDir, file)):
             smaliDirs.append(os.path.join(decomDir, file))
@@ -81,15 +81,13 @@ def injectPackageInMulDex(decomDir, packageNameList, outputDir, mergeLater=False
                         shutil.copy2(os.path.join(root, file), os.path.join(targetRoot, file))
         if smaliChanged:
             targetPath = smaliDir.replace(decomDir, outputDir)
-            if not injectLogSmali:
-                shutil.copy2(".\\inject_vector\\out\\FlowLogNG.smali", targetPath)
-                shutil.copy2(".\\inject_vector\\out\\MaskString.smali", targetPath)
-                shutil.copy2(".\\inject_vector\\out\\MaskMap.smali", targetPath)
-                injectLogSmali = True
             tmpPath = os.path.split(targetPath)
             newName = os.path.join(tmpPath[0], "x" + tmpPath[1])
             os.rename(targetPath, newName)
-            changedSmaliDirs.append(targetPath)
+            changedSmaliDirs.append(newName)
+    payloadSmaliDir = os.path.join(outputDir, "xsmali"+str(len(smaliDirs)+1))
+    shutil.copytree(env.SMALIPAYLOAD, payloadSmaliDir)
+    changedSmaliDirs.append(payloadSmaliDir)
     return changedSmaliDirs
 
 

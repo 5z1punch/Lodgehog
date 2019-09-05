@@ -2,6 +2,7 @@ import os
 from adb_controller import adb
 from loguru import logger
 import env
+import time
 
 def init_vm_env():
     status, exec_ret = adb.exec_shell("getprop dalvik.vm.usejit")
@@ -9,9 +10,16 @@ def init_vm_env():
     status, exec_ret = adb.exec_shell("getprop dalvik.vm.usejitprofiles")
     usejitprofiles = exec_ret.strip()
     if usejit != "false" or usejitprofiles != "false":    
-        with open(os.path.join("adb_script","init_vm_env.sh")) as shfile:
-            adb.exec_shell(shfile.read())
-    logger.info("disable dalvik jit and jit profiles")
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)),"adb_script","init_vm_env.sh")) as shfile:
+            if adb.exec_shell(f"'{shfile.read()}'")[0]:
+                logger.info("disable dalvik jit and jit profiles")
+                wait_start = 10
+                logger.info(f"wait {wait_start}s for android restart")
+                time.sleep(wait_start)
+                logger.info(f"wait is over. If your phone is still loading, adjust waiting time manually.")
+            else:
+                logger.error("set android system env failed!")
+                assert(False)
 
 def deploy_app(apk_path, package_name):
     if adb.install(apk_path):
