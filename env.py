@@ -18,3 +18,6 @@ SIGNKEYPATH = os.path.join(BASEPATH, "libs", "jarsigner", "testkey")
 
 # inject vector
 SMALIPAYLOAD = os.path.join(BASEPATH, "inject_vector", "smali", "build_dex", "out")
+
+# static analyzer
+STATICANA = os.path.join(BASEPATH, "static_analyzer")

@@ -2,7 +2,7 @@ import frida
 import sys
 
 sys.path.append('.')
-import searchForJsonSDK
+from static_analyzer import searchForJsonSDK
 import os
 
 
@@ -46,6 +46,10 @@ def load_scripts(process, sourceDir):
     script = process.create_script(script_text)
     script.load()
 
+def frida_attach(package_name, smali_dir):
+    process = attach(package_name)
+    load_scripts(process, smali_dir)
+    sys.stdin.read()
 
 if __name__ == '__main__':
     package_name = "com.smile.gifmaker"

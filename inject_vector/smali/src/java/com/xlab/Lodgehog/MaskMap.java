@@ -1,4 +1,4 @@
-package com.xlab.Lodgehog;
+package com.xlab.lodgehog;
 import java.util.Map;
 
 public class MaskMap{

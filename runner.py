@@ -3,6 +3,8 @@ import shutil
 import os
 from oat_repacker import init, pack_helper, oat_opt
 from method_rewritor import injector
+from loguru import logger
+import frida_controller.controller
 
 opt_tmp = os.path.join(os.path.dirname(os.path.realpath(__file__)),"tmp")
 
@@ -28,8 +30,15 @@ def main():
     output_apk = pack_helper.repack_apk(unpack_dir)
     # init android env
     init.init_vm_env()
+    # install app and inject payload odex
     app_dir, oat_path, origin_odex = init.deploy_app(apk_path, package_name)
     oat_opt.inject_oat(app_dir, oat_path, package_name, output_apk, origin_odex)
+    # setup app manually
+    logger.info("Please setup your app manually.and wait for ")
+    logger.info("And wait for stable running to reduce dirty data")
+    input("Input any key to continue:")
+    # frida attach
+    frida_controller.controller.frida_attach(package_name, smali_dir)
 
 if __name__ == '__main__':
     main()

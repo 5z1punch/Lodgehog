@@ -1,4 +1,4 @@
-package com.xlab.Lodgehog;
+package com.xlab.lodgehog;
 
 import android.os.Environment;
 import android.os.Process;
