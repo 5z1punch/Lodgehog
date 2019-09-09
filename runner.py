@@ -18,12 +18,15 @@ def main():
     # AXML parser & get target_java_packages
     pass
     # inject log
-    target_java_packages = ["com.xlab.forkprocesstest"]
+    target_java_packages = ["com.immomo.momo"]
     repack_smali_dir = smali_dir + "_repack"
     if injector.DEBUG:
         if os.path.exists(repack_smali_dir):
             shutil.rmtree(repack_smali_dir)
-    injector.injectPackageInMulDex(smali_dir, target_java_packages, repack_smali_dir)
+        injector.injectPackageInMulDex(smali_dir, target_java_packages, repack_smali_dir)
+    else:
+        if not os.path.exists(repack_smali_dir):
+            injector.injectPackageInMulDex(smali_dir, target_java_packages, repack_smali_dir)
     # pack to dex
     pack_helper.smali2dex(repack_smali_dir, unpack_dir)
     # repack

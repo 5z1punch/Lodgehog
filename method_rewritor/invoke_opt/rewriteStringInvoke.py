@@ -78,7 +78,7 @@ def rewrite(line):
         for sm in staticMethods:
             invokeCode = "L" + originClass+";->"+sm
             if invokeCode in line:
-                rewriteCode = line.replace("L" + originClass+";->","LMaskString;->")
+                rewriteCode = line.replace("L" + originClass+";->","Lcom/xlab/lodgehog/MaskString;->")
                 return True, rewriteCode
     elif tline.startswith("invoke-virtual"):
         for vm in virtualMethods:
@@ -86,6 +86,6 @@ def rewrite(line):
             if invokeCode in line:
                 tmps = line.split("(")
                 assert len(tmps)==2
-                rewriteCode = tmps[0].replace("L" + originClass+";->","LMaskString;->")+"(" + "L" + originClass+";"+tmps[1]
+                rewriteCode = tmps[0].replace("L" + originClass+";->","Lcom/xlab/lodgehog/MaskString;->")+"(" + "L" + originClass+";"+tmps[1]
                 return True, rewriteCode.replace("invoke-virtual", "invoke-static")
     return False, None

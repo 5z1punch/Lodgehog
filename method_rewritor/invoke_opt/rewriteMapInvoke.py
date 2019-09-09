@@ -34,6 +34,6 @@ def rewrite(line):
                     tmps = line.split("(")
                     assert len(tmps) == 2
                     rewriteCode = tmps[0].replace("L" + oClass + ";->",
-                                                  "LMaskMap;->") + "(" + "L" + oInterface + ";" + tmps[1]
+                                                  "Lcom/xlab/lodgehog/MaskMap;->") + "(" + "L" + oInterface + ";" + tmps[1]
                     return True, rewriteCode.replace("invoke-virtual", "invoke-static")
     return False, None

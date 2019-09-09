@@ -13,9 +13,11 @@ def init_vm_env():
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)),"adb_script","init_vm_env.sh")) as shfile:
             if adb.exec_shell(f"'{shfile.read()}'")[0]:
                 logger.info("disable dalvik jit and jit profiles")
-                wait_start = 10
-                logger.info(f"wait {wait_start}s for android restart")
-                time.sleep(wait_start)
+                # wait_start = 10
+                # logger.info(f"wait {wait_start}s for android restart")
+                # time.sleep(wait_start)
+                print(f"wait for android restart, press Enter to continue")
+                input()
                 logger.info(f"wait is over. If your phone is still loading, adjust waiting time manually.")
             else:
                 logger.error("set android system env failed!")

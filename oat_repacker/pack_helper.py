@@ -124,9 +124,11 @@ def replace_odex_checksum(origin_odex, payload_odex):
 def apk2smali(origin_apk_file, output_dir=None):
     if not output_dir:
         output_dir = os.path.join(env.TMPPATH, os.path.splitext(os.path.basename(origin_apk_file))[0])
-    unpack_apk(origin_apk_file, output_dir)
+    if not os.path.exists(output_dir):
+        unpack_apk(origin_apk_file, output_dir)
     smali_dir = os.path.realpath(output_dir)+"_smali"
-    dex2smali(output_dir, smali_dir)
+    if not os.path.exists(smali_dir):
+        dex2smali(output_dir, smali_dir)
     return output_dir, smali_dir
     
 def main():

@@ -7,7 +7,7 @@ from method_rewritor.invoke_opt import rewriteStringInvoke, rewriteMapInvoke
 from loguru import logger
 import env
 
-DEBUG = True
+DEBUG = False
 
 def rewriteController(line):
     rewritePlugins = [
@@ -23,7 +23,7 @@ def rewriteController(line):
 def injectLogPlugin(smaliFile, outFile):
     smaliChanged = False
     with open(smaliFile) as smaliFileHandle:
-        logger.info(f"scan log point for {smaliFile} ")
+        # logger.info(f"scan log point for {smaliFile} ")
         with open(outFile, 'w') as outFileHandle:
             for line in smaliFileHandle:
                 rewriteCheck = rewriteController(line)
@@ -33,7 +33,8 @@ def injectLogPlugin(smaliFile, outFile):
                     outFileHandle.write(rewriteCheck[1])
                 else:
                     outFileHandle.write(line)
-    logger.debug(f"is {smaliFile} changed: {smaliChanged}")
+    if smaliChanged:
+        logger.debug(f"{smaliFile} changed")
     return smaliChanged
 
 
