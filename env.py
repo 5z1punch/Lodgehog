@@ -21,3 +21,6 @@ SMALIPAYLOAD = os.path.join(BASEPATH, "inject_vector", "smali", "build_dex", "ou
 
 # static analyzer
 STATICANA = os.path.join(BASEPATH, "static_analyzer")
+
+# frida 
+FRIDAPATH = os.path.join(BASEPATH, "frida_controller")

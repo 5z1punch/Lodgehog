@@ -1,10 +1,11 @@
 import frida
 import sys
+import env
 
-sys.path.append('.')
 from static_analyzer import searchForJsonSDK
 import os
 
+SCRIPTPATH = os.path.join(env.FRIDAPATH, "frida_script")
 
 def attach(package_name):
     print(f"attach {package_name}")
@@ -20,9 +21,11 @@ def get_handle_json_scripts(sourceDir):
             # for kuaishou
             if f == "gson":
                 f = "gson_for_kuaishou"
-            with open('frida-script' + os.sep + "handle_json" + os.sep + f + ".js") as script_file:
+            filepath = os.path.join(SCRIPTPATH, "handle_json", f + ".js")
+            with open(filepath) as script_file:
                 script_text += script_file.read() + "\n"
-    with open('frida-script' + os.sep + "handle_json" + os.sep + "org.json.js") as script_file:
+    filepath = os.path.join(SCRIPTPATH, "handle_json", "org.json.js")
+    with open(filepath) as script_file:
         script_text += script_file.read() + "\n"
     return script_text
 
@@ -30,7 +33,8 @@ def get_handle_json_scripts(sourceDir):
 def get_handle_scripts(handle_name_list):
     script_text = ""
     for handle_name in handle_name_list:
-        with open('frida-script' + os.sep + handle_name + ".js") as file:
+        filepath = os.join.path(SCRIPTPATH, handle_name+".js")
+        with open(filepath) as file:
             script_text += file.read() + "\n"
     return script_text
 
@@ -49,6 +53,9 @@ def load_scripts(process, sourceDir):
 def frida_attach(package_name, smali_dir):
     process = attach(package_name)
     load_scripts(process, smali_dir)
+    print("==================")
+    print("+++ Log  Start +++")
+    print("==================")
     sys.stdin.read()
 
 if __name__ == '__main__':
