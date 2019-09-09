@@ -8,15 +8,24 @@ from loguru import logger
 import env
 
 DEBUG = False
+rewritePlugins = [
+    rewriteStringInvoke,
+    rewriteMapInvoke,
+]
+dexMethodRefSet = {}
+
+def resetRefSet():
+    global dexMethodRefSet
+    dexMethodRefSet = {}
+    for plugin in rewritePlugins:
+        dexMethodRefSet[plugin.__name__] = set()
 
 def rewriteController(line):
-    rewritePlugins = [
-        rewriteStringInvoke,
-        rewriteMapInvoke
-    ]
+    global rewritePlugins, dexMethodRefSet
     for plugin in rewritePlugins:
         rewriteCheck = plugin.rewrite(line)
         if rewriteCheck[0]:
+            dexMethodRefSet[plugin.__name__].add(rewriteCheck[2])
             return rewriteCheck
     return False, None
 
@@ -61,11 +70,12 @@ def injectPackageInMulDex(decomDir, packageNameList, outputDir, mergeLater=False
     packageDirs = []
     for smaliDir in smaliDirs:
         for subDir in subDirList:
-            packageDirs.append(smaliDir + os.sep + subDir)
+            packageDirs.append(os.path.join(smaliDir, subDir))
     if not mergeLater:
         shutil.copytree(decomDir, outputDir, ignore=ignorePackageFiles(packageDirs), ignore_dangling_symlinks=True)
     for smaliDir in smaliDirs:
         smaliChanged = False
+        resetRefSet()
         for subDir in subDirList:
             for root, dirs, files in os.walk(os.path.join(smaliDir, subDir)):
                 logger.info(f"step into package dir {root}")
@@ -81,6 +91,7 @@ def injectPackageInMulDex(decomDir, packageNameList, outputDir, mergeLater=False
                     else:
                         shutil.copy2(os.path.join(root, file), os.path.join(targetRoot, file))
         if smaliChanged:
+            # TODO
             targetPath = smaliDir.replace(decomDir, outputDir)
             tmpPath = os.path.split(targetPath)
             newName = os.path.join(tmpPath[0], "x" + tmpPath[1])
