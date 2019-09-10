@@ -4,12 +4,17 @@ from loguru import logger
 import env
 from oat_repacker import pack_helper
 
+def recover_permission(file_path):
+    ch_command = f"chown system {file_path} && chgrp system {file_path} && chmod 644 {file_path}"
+    return adb.exec_shell(f"'{ch_command}'")
+
 def replace_base_apk(app_dir, repack_apk):
     if adb.push_file(repack_apk):
         repack_apk_remote = '/sdcard/' + os.path.basename(repack_apk)
         # bak origin base.apk
         if adb.exec_shell(f"mv {app_dir}/base.apk {app_dir}/base.apk.bak")[0]:
             if adb.exec_shell(f"mv {repack_apk_remote} {app_dir}/base.apk")[0]:
+                recover_permission(f"{app_dir}/base.apk")
                 return True
     logger.error(f"replace {app_dir}/base.apk failed")
     return False

@@ -13,12 +13,28 @@ rewritePlugins = [
     rewriteMapInvoke,
 ]
 dexMethodRefSet = {}
+dexSmaliMDef = {}
+defNum = 0
+maxFlag = False
+maxAddRef = 0
+
+for plugin in rewritePlugins:
+    maxAddRef += plugin.MAXREF
 
 def resetRefSet():
-    global dexMethodRefSet
+    global dexMethodRefSet, dexSmaliMDef, maxFlag, defNum, rewritePlugins
     dexMethodRefSet = {}
+    dexSmaliMDef = {}
+    defNum = 0
+    maxFlag = False
     for plugin in rewritePlugins:
         dexMethodRefSet[plugin.__name__] = set()
+
+def isMethdoDef(line):
+    line = line.strip()
+    if line.startswith(".method "):
+        return True
+    return False
 
 def rewriteController(line):
     global rewritePlugins, dexMethodRefSet
@@ -30,11 +46,15 @@ def rewriteController(line):
     return False, None
 
 def injectLogPlugin(smaliFile, outFile):
+    global dexSmaliMDef, maxFlag, maxAddRef, defNum
     smaliChanged = False
     with open(smaliFile) as smaliFileHandle:
         # logger.info(f"scan log point for {smaliFile} ")
+        methodDefNum = 0
         with open(outFile, 'w') as outFileHandle:
             for line in smaliFileHandle:
+                if not maxFlag and isMethdoDef(line):
+                    methodDefNum += 1
                 rewriteCheck = rewriteController(line)
                 if rewriteCheck[0]:
                     # logger.info("")
@@ -42,10 +62,23 @@ def injectLogPlugin(smaliFile, outFile):
                     outFileHandle.write(rewriteCheck[1])
                 else:
                     outFileHandle.write(line)
+        if not maxFlag:
+            dexSmaliMDef[smaliFile] = methodDefNum
+            defNum += methodDefNum
+            if defNum >= maxAddRef:
+                maxFlag = True
     if smaliChanged:
         logger.debug(f"{smaliFile} changed")
     return smaliChanged
 
+def moveWithSubDir(baseDir, absPath, outPath):
+    baseDir = os.path.realpath(baseDir)
+    absPath = os.path.realpath(absPath)
+    relPath = os.path.relpath(absPath, baseDir)
+    outputDir = os.path.join(outPath, os.path.split(relPath)[0])
+    if not os.path.exists(outputDir):
+        os.makedirs(outputDir)
+    shutil.move(absPath, os.path.join(outPath,relPath))
 
 def ignorePackageFiles(packageDirs):
     def ignoreFunc(dirname, filenames):
@@ -53,7 +86,6 @@ def ignorePackageFiles(packageDirs):
             return filenames
         else:
             return []
-
     return ignoreFunc
 
 
@@ -73,6 +105,9 @@ def injectPackageInMulDex(decomDir, packageNameList, outputDir, mergeLater=False
             packageDirs.append(os.path.join(smaliDir, subDir))
     if not mergeLater:
         shutil.copytree(decomDir, outputDir, ignore=ignorePackageFiles(packageDirs), ignore_dangling_symlinks=True)
+    payloadSmaliDir = os.path.join(outputDir, "xsmali"+str(len(smaliDirs)+1))
+    shutil.copytree(env.SMALIPAYLOAD, payloadSmaliDir)
+    changedSmaliDirs.append(payloadSmaliDir)
     for smaliDir in smaliDirs:
         smaliChanged = False
         resetRefSet()
@@ -91,15 +126,21 @@ def injectPackageInMulDex(decomDir, packageNameList, outputDir, mergeLater=False
                     else:
                         shutil.copy2(os.path.join(root, file), os.path.join(targetRoot, file))
         if smaliChanged:
-            # TODO
+            dexRefNum = 0
+            dexDefNum = 0
+            for pName in dexMethodRefSet:
+                dexRefNum += len(dexMethodRefSet[pName])
             targetPath = smaliDir.replace(decomDir, outputDir)
+            for smaliFile in dexSmaliMDef:
+                if dexDefNum < dexRefNum:
+                    moveWithSubDir(targetPath, smaliFile.replace(decomDir, outputDir), payloadSmaliDir)
+                    dexDefNum += dexSmaliMDef[smaliFile]
+                else:
+                    break
             tmpPath = os.path.split(targetPath)
             newName = os.path.join(tmpPath[0], "x" + tmpPath[1])
             os.rename(targetPath, newName)
             changedSmaliDirs.append(newName)
-    payloadSmaliDir = os.path.join(outputDir, "xsmali"+str(len(smaliDirs)+1))
-    shutil.copytree(env.SMALIPAYLOAD, payloadSmaliDir)
-    changedSmaliDirs.append(payloadSmaliDir)
     return changedSmaliDirs
 
 

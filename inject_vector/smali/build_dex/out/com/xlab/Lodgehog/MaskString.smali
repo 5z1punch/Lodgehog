@@ -1,4 +1,4 @@
-.class public final Lcom/xlab/Lodgehog/MaskString;
+.class public final Lcom/xlab/lodgehog/MaskString;
 .super Ljava/lang/Object;
 .source "MaskString.java"
 
@@ -46,7 +46,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 16
     return v0
@@ -84,7 +84,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 21
     return v0
@@ -122,7 +122,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 26
     return v0
@@ -168,7 +168,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 31
     return v0
@@ -206,7 +206,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 339
     return v0
@@ -240,7 +240,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 84
     return v0
@@ -274,7 +274,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 89
     return v0
@@ -304,7 +304,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 179
     return-object v0
@@ -338,7 +338,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 194
     return v0
@@ -372,7 +372,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 74
     return v0
@@ -406,7 +406,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 69
     return v0
@@ -432,7 +432,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 299
     return-object v0
@@ -474,7 +474,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 294
     return-object v0
@@ -508,7 +508,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 114
     return v0
@@ -542,7 +542,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 64
     return v0
@@ -576,7 +576,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 79
     return v0
@@ -606,7 +606,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 269
     return-object v0
@@ -640,7 +640,7 @@
 
     aput-object p2, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 274
     return-object v0
@@ -694,7 +694,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v0, v1, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v0, v1, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 45
     return-void
@@ -720,7 +720,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 59
     return-object v0
@@ -755,7 +755,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 49
     return-object v0
@@ -785,7 +785,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 54
     return-object v0
@@ -839,7 +839,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v0, v1, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v0, v1, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 41
     return-void
@@ -869,7 +869,7 @@
 
     aput-object p0, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 119
     return v0
@@ -907,7 +907,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 124
     return v0
@@ -953,7 +953,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 129
     return v0
@@ -987,7 +987,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 144
     return v0
@@ -1029,7 +1029,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 149
     return v0
@@ -1055,7 +1055,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 334
     return-object v0
@@ -1085,7 +1085,7 @@
 
     aput-object p0, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 11
     return v0
@@ -1126,7 +1126,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 229
     return-object v0
@@ -1156,7 +1156,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 224
     return-object v0
@@ -1194,7 +1194,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 134
     return v0
@@ -1240,7 +1240,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 139
     return v0
@@ -1274,7 +1274,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 154
     return v0
@@ -1316,7 +1316,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 159
     return v0
@@ -1346,7 +1346,7 @@
 
     aput-object p0, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 6
     return v0
@@ -1380,7 +1380,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 189
     return v0
@@ -1426,7 +1426,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 36
     return v0
@@ -1484,7 +1484,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 94
     return v0
@@ -1550,7 +1550,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 99
     return v0
@@ -1592,7 +1592,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 184
     return-object v0
@@ -1626,7 +1626,7 @@
 
     aput-object p2, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 209
     return-object v0
@@ -1660,7 +1660,7 @@
 
     aput-object p2, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 204
     return-object v0
@@ -1694,7 +1694,7 @@
 
     aput-object p2, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 199
     return-object v0
@@ -1724,7 +1724,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 219
     return-object v0
@@ -1762,7 +1762,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 214
     return-object v0
@@ -1796,7 +1796,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 109
     return v0
@@ -1838,7 +1838,7 @@
 
     aput-object v5, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 104
     return v0
@@ -1880,7 +1880,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 174
     return-object v0
@@ -1914,7 +1914,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 164
     return-object v0
@@ -1956,7 +1956,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 169
     return-object v0
@@ -1982,7 +1982,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 264
     return-object v0
@@ -2008,7 +2008,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 239
     return-object v0
@@ -2038,7 +2038,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 234
     return-object v0
@@ -2064,7 +2064,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 259
     return-object v0
@@ -2090,7 +2090,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 249
     return-object v0
@@ -2120,7 +2120,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 244
     return-object v0
@@ -2146,7 +2146,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 254
     return-object v0
@@ -2176,7 +2176,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 309
     return-object v0
@@ -2206,7 +2206,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 329
     return-object v0
@@ -2236,7 +2236,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 324
     return-object v0
@@ -2266,7 +2266,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 314
     return-object v0
@@ -2296,7 +2296,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 319
     return-object v0
@@ -2322,7 +2322,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 279
     return-object v0
@@ -2352,7 +2352,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 304
     return-object v0
@@ -2378,7 +2378,7 @@
 
     aput-object p0, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 284
     return-object v0
@@ -2420,7 +2420,7 @@
 
     aput-object v4, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 289
     return-object v0

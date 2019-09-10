@@ -1,7 +1,7 @@
 import frida
 import sys
 import env
-
+from inject_vector.controller.logController import runCmd
 from static_analyzer import searchForJsonSDK
 import os
 
@@ -56,6 +56,7 @@ def frida_attach(package_name, smali_dir):
     print("==================")
     print("+++ Log  Start +++")
     print("==================")
+    runCmd("startLog", process)
     sys.stdin.read()
 
 if __name__ == '__main__':

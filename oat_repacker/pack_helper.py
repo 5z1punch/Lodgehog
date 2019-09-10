@@ -56,6 +56,7 @@ def smali2dex(smali_dir, unpack_dir):
                 subprocess.check_call(cmd, shell=True)
             except Exception as e:
                 logger.error(e)
+                assert False
 
 
 def repack_apk(unpack_dir, output_apk = None):

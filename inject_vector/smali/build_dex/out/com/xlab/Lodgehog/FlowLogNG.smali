@@ -1,4 +1,4 @@
-.class public Lcom/xlab/Lodgehog/FlowLogNG;
+.class public Lcom/xlab/lodgehog/FlowLogNG;
 .super Ljava/lang/Object;
 .source "FlowLogNG.java"
 
@@ -31,26 +31,26 @@
     .line 14
     const-string v0, "flowLogNG/"
 
-    sput-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
+    sput-object v0, Lcom/xlab/lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
 
     .line 15
     const/4 v0, 0x0
 
-    sput-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
+    sput-boolean v0, Lcom/xlab/lodgehog/FlowLogNG;->logFlag:Z
 
     .line 16
     invoke-static {}, Landroid/os/Process;->myPid()I
 
     move-result v0
 
-    sput v0, Lcom/xlab/Lodgehog/FlowLogNG;->pid:I
+    sput v0, Lcom/xlab/lodgehog/FlowLogNG;->pid:I
 
     .line 17
     new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
 
-    sput-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    sput-object v0, Lcom/xlab/lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
     return-void
 .end method
@@ -70,7 +70,7 @@
 
     .prologue
     .line 101
-    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    sget-object v0, Lcom/xlab/lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-virtual {v0}, Ljava/util/concurrent/ConcurrentHashMap;->values()Ljava/util/Collection;
 
@@ -124,7 +124,7 @@
 
     .prologue
     .line 111
-    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    sget-object v0, Lcom/xlab/lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-virtual {v0}, Ljava/util/concurrent/ConcurrentHashMap;->values()Ljava/util/Collection;
 
@@ -178,7 +178,7 @@
 
     .prologue
     .line 19
-    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
+    sget-object v0, Lcom/xlab/lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
 
     return-object v0
 .end method
@@ -188,7 +188,7 @@
 
     .prologue
     .line 25
-    sget-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
+    sget-boolean v0, Lcom/xlab/lodgehog/FlowLogNG;->logFlag:Z
 
     return v0
 .end method
@@ -200,7 +200,7 @@
     const/4 v1, 0x0
 
     .line 49
-    sget-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
+    sget-boolean v0, Lcom/xlab/lodgehog/FlowLogNG;->logFlag:Z
 
     if-nez v0, :cond_6
 
@@ -238,7 +238,7 @@
     const-string v0, ""
 
     .line 56
-    invoke-static {p1}, Lcom/xlab/Lodgehog/FlowLogNG;->obj2String(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {p1}, Lcom/xlab/lodgehog/FlowLogNG;->obj2String(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v4
 
@@ -259,7 +259,7 @@
 
     move-result-object v0
 
-    invoke-static {v6}, Lcom/xlab/Lodgehog/FlowLogNG;->obj2String(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v6}, Lcom/xlab/lodgehog/FlowLogNG;->obj2String(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v6
 
@@ -338,7 +338,7 @@
     move-result-object v1
 
     .line 64
-    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    sget-object v0, Lcom/xlab/lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -351,7 +351,7 @@
     if-eqz v0, :cond_b4
 
     .line 66
-    sget-object v0, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    sget-object v0, Lcom/xlab/lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -429,13 +429,13 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    sget-object v5, Lcom/xlab/Lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
+    sget-object v5, Lcom/xlab/lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    sget v5, Lcom/xlab/Lodgehog/FlowLogNG;->pid:I
+    sget v5, Lcom/xlab/lodgehog/FlowLogNG;->pid:I
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -476,7 +476,7 @@
     invoke-direct {v0, v4}, Ljava/io/FileOutputStream;-><init>(Ljava/lang/String;)V
 
     .line 81
-    sget-object v4, Lcom/xlab/Lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
+    sget-object v4, Lcom/xlab/lodgehog/FlowLogNG;->LogFileMap:Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -647,7 +647,7 @@
 
     .prologue
     .line 22
-    sput-object p0, Lcom/xlab/Lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
+    sput-object p0, Lcom/xlab/lodgehog/FlowLogNG;->logDir:Ljava/lang/String;
 
     .line 23
     return-void
@@ -660,7 +660,7 @@
     .line 28
     const/4 v0, 0x1
 
-    sput-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
+    sput-boolean v0, Lcom/xlab/lodgehog/FlowLogNG;->logFlag:Z
 
     .line 29
     return-void
@@ -673,7 +673,7 @@
     .line 31
     const/4 v0, 0x0
 
-    sput-boolean v0, Lcom/xlab/Lodgehog/FlowLogNG;->logFlag:Z
+    sput-boolean v0, Lcom/xlab/lodgehog/FlowLogNG;->logFlag:Z
 
     .line 32
     return-void

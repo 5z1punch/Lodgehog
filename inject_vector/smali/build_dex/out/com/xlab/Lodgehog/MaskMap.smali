@@ -1,4 +1,4 @@
-.class public Lcom/xlab/Lodgehog/MaskMap;
+.class public Lcom/xlab/lodgehog/MaskMap;
 .super Ljava/lang/Object;
 .source "MaskMap.java"
 
@@ -42,7 +42,7 @@
 
     aput-object p1, v3, v4
 
-    invoke-static {v1, v2, v3}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v2, v3}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 8
     return v0
@@ -72,7 +72,7 @@
 
     aput-object p1, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 13
     return-object v0
@@ -106,7 +106,7 @@
 
     aput-object p2, v2, v3
 
-    invoke-static {v1, v0, v2}, Lcom/xlab/Lodgehog/FlowLogNG;->log(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+    invoke-static {v1, v0, v2}, Lcom/xlab/lodgehog/FridaCaller;->preCall(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
 
     .line 18
     return-object v0
