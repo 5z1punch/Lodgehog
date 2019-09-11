@@ -25,3 +25,6 @@ STATICANA = os.path.join(BASEPATH, "static_analyzer")
 
 # frida 
 FRIDAPATH = os.path.join(BASEPATH, "frida_controller")
+
+# project property
+PROJECTJSON = os.path.join(TMPPATH, "project.json")
