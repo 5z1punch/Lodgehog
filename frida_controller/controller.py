@@ -30,23 +30,33 @@ def get_handle_json_scripts(sourceDir):
     return script_text
 
 
-def get_handle_scripts(handle_name_list):
+def loads_from_list(script_list):
     script_text = ""
-    for handle_name in handle_name_list:
-        filepath = os.join.path(SCRIPTPATH, handle_name+".js")
-        with open(filepath) as file:
-            script_text += file.read() + "\n"
+    for script_fd in script_list:
+        script_fd_path = os.path.join(SCRIPTPATH, script_fd)
+        if os.path.isdir(script_fd_path):
+            for file in os.listdir(script_fd_path):
+                if os.path.isfile(file):
+                    with open(os.path.join(script_fd_path, file)) as sfpf:
+                        script_text += sfpf.read() + "\n"
+        else:
+            with open(script_fd_path) as sfpf:
+                script_text += sfpf.read() + "\n"
     return script_text
 
 
 def load_scripts(process, sourceDir):
     script_text = ""
-    script_text += get_handle_json_scripts(sourceDir)
     handle_name_list = [
-        "hook_pattern_option",
-        "hook_url_option"
+        "utils/utils.js",
+        "utils/init.js",
+        "frida_caller.js",
+        "hook_pattern_option.js",
+        "hook_url_option.js",
+        "hook_text_option.js",
     ]
-    script_text += get_handle_scripts(handle_name_list)
+    script_text += loads_from_list(handle_name_list)
+    script_text += get_handle_json_scripts(sourceDir)
     script = process.create_script(script_text)
     script.load()
 

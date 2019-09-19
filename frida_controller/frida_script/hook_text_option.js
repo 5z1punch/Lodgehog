@@ -9,11 +9,8 @@ Java.perform(function() {
         fromHtmlOverload.push(["java.lang.String","int", "android.text.Html$ImageGetter","android.text.Html$TagHandler"]);
     }
     for (let i = 0; i < fromHtmlOverload.length; i++) {
-        android_text_Html.fromHtml.overload.apply(this,fromHtmlOverload[i]).implementation = function(){
-            const retval = this.fromHtml.apply(this, arguments);
-            // TODO
-            // log
-            return retval;
-        }
+        android_text_Html.fromHtml.overload.apply(this,fromHtmlOverload[i]).implementation = hookFactory(
+            "Html", "fromHtml", [0], ture, false, undefined, false
+        );
     }
 });

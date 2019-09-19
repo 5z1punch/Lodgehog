@@ -8,3 +8,71 @@ function getSdkVersion(){
     var versionStr = buffer.readCString();
     return parseInt(versionStr);
 }
+
+function fridaCallback(method, tid, arg_data, ret_data, handle_data, handle){
+    if(!tid && Java.available){
+        tid = Java.use("android.os.Process").myTid();
+    }
+    send({
+        type: "METHOD",
+        method: method,
+        tid: tid,
+        data: arg_data,
+        ret: ret_data,
+        _this: handle_data,
+        handle: handle,
+    });
+}
+
+function getIdHashCode(javaObject){
+    var hashcode = "static";
+    if(Java.available){
+        const javaSystem = Java.use("java.lang.System");
+        try{
+            hashcode = parseInt(javaSystem.identityHashCode(javaObject)).toString(16);
+        }
+        catch(e){}
+    }
+    return hashcode;
+}
+
+function hookFactory(className, hookMethod, argsPos = [], needRet = false, needThis = false, 
+    thisSerialize=undefined ,needHadle = false){
+    return function(){
+        const retval = this[hookMethod].apply(this,arguments);
+        var argList = [];
+        for(var i = 0; i < argsPos.length; i++){
+            if(argsPos[i]>=arguments.length){
+                console.error("args pos exceeds the number of parameters: ");
+                console.error(className+"."+hookMethod+" need arg at `"+argsPos[i]+"`");
+                argList[i] = null;
+            }
+            else{
+                argList[i] = arguments[argsPos[i]];
+            }
+        }
+        callbackArguments = [className + "." + hookMethod, 0, argList, ];
+        if(needRet){
+            callbackArguments.push(retval.toString());
+        }
+        else{
+            callbackArguments.push(undefined);
+        }
+        if(needThis){
+            if(thisSerialize){
+                callbackArguments.push(thisSerialize(this));
+            }
+            else{
+                callbackArguments.push(this);
+            }
+        }
+        if(needHadle){
+            callbackArguments.push(getIdHashCode(this));
+        }
+        else{
+            callbackArguments.push(undefined);
+        }
+        fridaCallback.apply(this, callbackArguments);
+        return retval;
+    }
+}

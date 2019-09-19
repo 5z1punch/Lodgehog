@@ -3,43 +3,67 @@ Java.perform(function () {
     console.log('hook java.util.regex.Pattern');
     try{
         var Pattern = Java.use("java.util.regex.Pattern");
-        var Matcher = Java.use("java.util.regex.Matcher");
-        var Exc = Java.use('java.lang.Exception');
-        var LLog = Java.use('android.util.Log');
-        // var List = Java.use("java.util.List");
+        // var Matcher = Java.use("java.util.regex.Matcher");
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
     }
-
-    Pattern.compile.overload('java.lang.String').implementation = function(){
-        console.log("Pattern.compile("+arguments[0]+")");
-        return this.compile.apply(this,arguments);
+    var thisSerialize = function(obj){
+        return obj.pattern();
     }
-
-    Pattern.compile.overload('java.lang.String','int').implementation = function(){
-        console.log("Pattern.compile("+arguments[0]+", "+arguments[1]+")");
-        return this.compile.apply(this,arguments);
-    }
-
-    Pattern.matcher.overload('java.lang.CharSequence').implementation = function(){
-        console.log("Pattern("+this.pattern()+").matcher("+arguments[0]+")");
-        return this.matcher.apply(this,arguments);
-    }
-    Pattern.matcher.overload('java.lang.String','java.lang.CharSequence').implementation = function(){
-        console.log("Pattern.matcher("+arguments[0]+", "+arguments[1]+")");
-        return this.matcher.apply(this,arguments);
-    }
-    Pattern.split.overload('java.lang.CharSequence').implementation = function (){
-        console.log("Pattern("+this.pattern()+").split("+arguments[0]+")");
-        return this.split.apply(this,arguments);
-    }
-    Pattern.split.overload('java.lang.CharSequence','int').implementation = function(){
-        console.log("Pattern("+this.pattern()+").split("+arguments[0]+", "+arguments[1]+")");
-        return this.split.apply(this,arguments);
-    }
-    Pattern.splitAsStream.implementation = function(){
-        console.log("Pattern("+this.pattern()+").splitAsStream("+arguments[0]+")");
-        return this.splitAsStream.apply(this,arguments);
+    cmMap = [{
+        class: Pattern,
+        methods: [
+            {
+                name: "compile",
+                overload: ['java.lang.String'],
+                argsPos: [0],
+            },
+            {
+                name: "compile",
+                overload: ['java.lang.String','int'],
+                argsPos: [0, 1],
+            },
+            {
+                name: "matcher",
+                overload: ['java.lang.CharSequence'],
+                argsPos: [0],
+                needThis: true,
+                thisSerialize: thisSerialize,
+            },
+            {
+                name: "matcher",
+                overload: ['java.lang.String','java.lang.CharSequence'],
+                argsPos: [0, 1],
+            },
+            {
+                name: "split",
+                overload: ['java.lang.CharSequence'],
+                argsPos: [0],
+                needThis: true,
+                thisSerialize: thisSerialize,
+            },
+            {
+                name: "split",
+                overload: ['java.lang.CharSequence','int'],
+                argsPos: [0, 1],
+                needThis: true,
+                thisSerialize: thisSerialize,
+            },
+            {
+                name: "splitAsStream",
+                argsPos: [0],
+                needThis: true,
+                thisSerialize: thisSerialize,
+            },
+        ],
+    },];
+    for(var cm in cmMap){
+        for(var method in cm.methods){
+            if(method.overload){
+                cm.class[method.name].overload.apply(this, cm.overload).implementation = hookFactory(
+                    "Pattern", cm.argsPos, false, cm.needThis ? cm.needThis : false, cm.thisSerialize, false);
+            }
+        }
     }
 });

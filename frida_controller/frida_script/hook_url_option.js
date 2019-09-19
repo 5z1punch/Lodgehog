@@ -4,68 +4,53 @@ Java.perform(function () {
     try{
         var URL = Java.use("java.net.URL");
         var URI = Java.use("android.net.Uri");
-        var Exc = Java.use('java.lang.Exception');
-        var LLog = Java.use('android.util.Log');
         // var List = Java.use("java.util.List");
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
     }
 
     var getParseEleImpFactory = function(funName,returnType,pArgsIndex){
         var _returnType = returnType ? returnType : "java.lang.String";
         var _pArgsIndex = pArgsIndex ? pArgsIndex : [];
         var implFun = function(){
-            // console.log(funName);
             var rrr = this[funName].apply(this,arguments);
-            // console.log(1);
-            var args = "";
+            var args = [];
             if(_pArgsIndex.length>0){
                 for (var i = 0; i < _pArgsIndex.length; i++) {
-                    console.log(3);
-                    args += arguments[_pArgsIndex[i]]+",";
+                    args.push(arguments[_pArgsIndex[i]]);
                 }
-                args = args.substring(0,args.length-1);
             }
-            var logStr = "URI(\""+this.toString()+"\")."+funName+"("+args+")="
-            // console.log(2);
+            var return_data = "";
             switch(_returnType){
                 case "java.lang.String":
-                    logStr += "\""+rrr+"\"";
+                    return_data = rrr;
                     break;
                 case "java.util.List":
                 case "java.util.Set":
                     var strArray = Java.array("java.lang.String", rrr.toArray());
-                    logStr += JSON.stringify(strArray);
+                    return_data = JSON.stringify(strArray);
                     break;
             }
-            console.log(logStr);
+            fridaCallback("URL."+funName, 0, args, return_data, this.toString(), null);
             return rrr;
         };
         return implFun;
     }
-    URI.getFragment.implementation = getParseEleImpFactory("getFragment");
-    URI.getHost.implementation = getParseEleImpFactory("getHost");
-    URI.getLastPathSegment.implementation = getParseEleImpFactory("getLastPathSegment");
-    URI.getPath.implementation = getParseEleImpFactory("getPath");
-    URI.getPathSegments.implementation = getParseEleImpFactory("getPathSegments","java.util.List");
-    URI.getQuery.implementation = getParseEleImpFactory("getQuery");
-    URI.getQueryParameter.implementation = getParseEleImpFactory("getQueryParameter", "java.lang.String",[0]);
-    // URI.getQueryParameterNames.implementation = getParseEleImpFactory("")
-    URI.getQueryParameters.implementation = getParseEleImpFactory("getQueryParameters","java.util.List",[0]);
-
-    URI.parse.implementation = function(){
-        console.log("URI.parse("+arguments[0]+")");
-        var rrr = this.parse.apply(this,arguments);
-        return rrr;
+    mList = [
+        ["getFragment"],
+        ["getHost"],
+        ["getLastPathSegment"],
+        ["getPath"],
+        ["getPathSegments", "java.util.List"],
+        ["getQuery"],
+        ["getQueryParameter", "java.lang.String",[0]],
+        ["getQueryParameters","java.util.List",[0]],
+    ];
+    for(var method in mList){
+        URL[method[0]].implementation = getParseEleImpFactory.apply(this, method);
     }
 
-    // URL.getFile.implementation = getParseEleImpFactory("getFile");
-    // URL.getPath.implementation = getParseEleImpFactory("getPath");
-    // URL.getQuery.implementation = getParseEleImpFactory("getQuery");
-    URL.$init.overload("java.lang.String").implementation = function(){
-        console.log("URL.$new(\""+arguments[0]+"\")");
-        var rrr =  this.$init.apply(this,arguments);
-        return rrr;
-    }
+    URI.parse.implementation = hookFactory("URI", "parse", [0], false, false, undefined, false);
+    URI.$init.overload("java.lang.String").implementation = hookFactory("URI", "$init", [0], false, false, undefined, false);
 });
