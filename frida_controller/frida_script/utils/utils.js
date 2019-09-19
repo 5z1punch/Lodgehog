@@ -13,11 +13,26 @@ function fridaCallback(method, tid, arg_data, ret_data, handle_data, handle){
     if(!tid && Java.available){
         tid = Java.use("android.os.Process").myTid();
     }
+    var data = "";
+    if(arg_data.constructor==String){
+        data = arg_data;
+    }
+    else if(arg_data.constructor==Array){
+        for(var arg in arg_data){
+            data += arg.toString()+", ";
+        }
+        if(data){
+            data = data.substring(0, data.length-2);
+        }
+    }
+    else{
+        data = arg_data.toString();
+    }
     send({
         type: "METHOD",
         method: method,
         tid: tid,
-        data: arg_data,
+        data: data,
         ret: ret_data,
         _this: handle_data,
         handle: handle,

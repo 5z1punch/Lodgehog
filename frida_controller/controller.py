@@ -45,6 +45,28 @@ def loads_from_list(script_list):
     return script_text
 
 
+def handle_method_callback(payload):
+    dump_str = "\n"
+    tid = payload["tid"]
+    handle = payload["handle"] if payload["handle"] else "xxxxxxxx"
+    _this = payload["_this"] if payload["_this"] else ""
+    method_name = payload["method"]
+    args_str = payload["data"]
+    ret_str = "= " + payload["ret"] if payload["ret"] else ""
+    dump_str += f"[{tid}] [{handle}@{_this}]-> {method_name}({args_str}){ret_str}"
+    print(dump_str)
+
+def on_message(message, data):
+    if message['type'] == 'send':
+        payload = message['payload']
+        if 'type' in payload.keys() and payload['type'] == 'METHOD':
+            handle_method_callback(payload)
+        else:
+            print(payload)
+            print('[!] payload is not handle for now!')
+    else:
+        print(f"[{message}] -> {data}")
+
 def load_scripts(process, sourceDir):
     script_text = ""
     handle_name_list = [
@@ -58,6 +80,7 @@ def load_scripts(process, sourceDir):
     script_text += loads_from_list(handle_name_list)
     script_text += get_handle_json_scripts(sourceDir)
     script = process.create_script(script_text)
+    script.on("message", on_message)
     script.load()
 
 def frida_attach(package_name, smali_dir):
