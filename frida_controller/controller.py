@@ -4,12 +4,14 @@ import env
 from inject_vector.controller.logController import runCmd
 from static_analyzer import searchForJsonSDK
 import os
+import stdlog
 
 SCRIPTPATH = os.path.join(env.FRIDAPATH, "frida_script")
 
 def attach(package_name):
     print(f"attach {package_name}")
     process = frida.get_usb_device().attach(package_name)
+    process.enable_jit()
     return process
 
 
@@ -18,9 +20,6 @@ def get_handle_json_scripts(sourceDir):
     script_text = ""
     for f in json_finded:
         if json_finded[f]:
-            # for kuaishou
-            if f == "gson":
-                f = "gson_for_kuaishou"
             filepath = os.path.join(SCRIPTPATH, "handle_json", f + ".js")
             with open(filepath) as script_file:
                 script_text += script_file.read() + "\n"
@@ -36,8 +35,9 @@ def loads_from_list(script_list):
         script_fd_path = os.path.join(SCRIPTPATH, script_fd)
         if os.path.isdir(script_fd_path):
             for file in os.listdir(script_fd_path):
-                if os.path.isfile(file):
-                    with open(os.path.join(script_fd_path, file)) as sfpf:
+                script_file_path = os.path.join(script_fd_path, file)
+                if os.path.isfile(script_file_path):
+                    with open(script_file_path) as sfpf:
                         script_text += sfpf.read() + "\n"
         else:
             with open(script_fd_path) as sfpf:
@@ -65,7 +65,7 @@ def on_message(message, data):
             print(payload)
             print('[!] payload is not handle for now!')
     else:
-        print(f"[{message}] -> {data}")
+        stdlog.error_print(f"[{message}] -> {data}")
 
 def load_scripts(process, sourceDir):
     script_text = ""

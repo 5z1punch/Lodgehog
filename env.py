@@ -28,3 +28,6 @@ FRIDAPATH = os.path.join(BASEPATH, "frida_controller")
 
 # project property
 PROJECTJSON = os.path.join(TMPPATH, "project.json")
+
+# log file
+LOGPATH = os.path.join(BASEPATH, "log")

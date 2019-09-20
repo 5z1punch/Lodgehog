@@ -44,12 +44,12 @@ Java.perform(function () {
         };
         return implFunc;
     }
-    typeList1 = [
+    const typeList1 = [
         "",
         "JSONArray",
         "JSONObject"
     ];
-    typeList2 = [
+    const typeList2 = [
         "Boolean",
         "Double",
         "Int",

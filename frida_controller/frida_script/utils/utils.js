@@ -18,7 +18,8 @@ function fridaCallback(method, tid, arg_data, ret_data, handle_data, handle){
         data = arg_data;
     }
     else if(arg_data.constructor==Array){
-        for(var arg in arg_data){
+        for(var argi = 0; argi < arg_data.length ; argi++){
+            var arg = arg_data[argi];
             data += arg.toString()+", ";
         }
         if(data){

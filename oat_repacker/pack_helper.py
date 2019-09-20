@@ -64,8 +64,6 @@ def repack_apk(unpack_dir, output_apk = None):
         output_apk = os.path.join(env.TMPPATH, os.path.basename(unpack_dir) + "_signed.apk")
     logger.info(f"repack {unpack_dir} to {output_apk}:")
     repack_apk_path = os.path.join(env.TMPPATH, os.path.basename(unpack_dir) + ".apk")
-    if os.path.exists(repack_apk_path):
-        os.remove(repack_apk_path)
     try:
         repackcmd = f"{env.JAVAPATH} -jar {env.APKTOOL} b {unpack_dir} -o {repack_apk_path}"
         subprocess.check_call(repackcmd, shell=True)

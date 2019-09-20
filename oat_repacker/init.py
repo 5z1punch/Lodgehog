@@ -25,7 +25,7 @@ def init_vm_env():
 
 def deploy_app(apk_path, package_name):
     logger.info(f"install {apk_path}")
-    if adb.install(apk_path):
+    if adb.check_installed(package_name) or adb.install(apk_path):
         status, exec_ret = adb.exec_shell(f"find /data/app/ -maxdepth 1 -name {package_name}-*")
         if status:
             app_dir = exec_ret.strip()

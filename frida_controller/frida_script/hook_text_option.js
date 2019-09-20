@@ -10,7 +10,7 @@ Java.perform(function() {
     }
     for (let i = 0; i < fromHtmlOverload.length; i++) {
         android_text_Html.fromHtml.overload.apply(this,fromHtmlOverload[i]).implementation = hookFactory(
-            "Html", "fromHtml", [0], ture, false, undefined, false
+            "Html", "fromHtml", [0], true, false, undefined, false
         );
     }
 });

@@ -37,7 +37,7 @@ Java.perform(function () {
         };
         return implFun;
     }
-    mList = [
+    const mList = [
         ["getFragment"],
         ["getHost"],
         ["getLastPathSegment"],
@@ -47,7 +47,8 @@ Java.perform(function () {
         ["getQueryParameter", "java.lang.String",[0]],
         ["getQueryParameters","java.util.List",[0]],
     ];
-    for(var method in mList){
+    for(var methodi = 0; methodi < mList.length; methodi++){
+        var method = mList[methodi];
         URL[method[0]].implementation = getParseEleImpFactory.apply(this, method);
     }
 

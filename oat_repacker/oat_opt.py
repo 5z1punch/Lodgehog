@@ -44,5 +44,5 @@ def inject_oat(app_dir, oat_path, package_name, repack_apk, origin_oat):
             patched_odex_path = pack_helper.replace_odex_checksum_enter(origin_oat, output_path)
             if replace_base_odex(oat_path, app_dir, patched_odex_path):
                 logger.success("inject payload odex success")
-                return True
-    return False
+                return output_path, patched_odex_path
+    return None

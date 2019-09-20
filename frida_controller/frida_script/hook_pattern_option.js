@@ -11,7 +11,7 @@ Java.perform(function () {
     var thisSerialize = function(obj){
         return obj.pattern();
     }
-    cmMap = [{
+    const cmMap = [{
         class: Pattern,
         methods: [
             {
@@ -58,8 +58,10 @@ Java.perform(function () {
             },
         ],
     },];
-    for(var cm in cmMap){
-        for(var method in cm.methods){
+    for(var cmi = 0; cmi < cmMap.length ; cmi++){
+        var cm = cmMap[cmi];
+        for(var methodi = 0; methodi < cm.methods.length; methodi++){
+            var method = cm.methods[methodi];
             if(method.overload){
                 cm.class[method.name].overload.apply(this, cm.overload).implementation = hookFactory(
                     "Pattern", cm.argsPos, false, cm.needThis ? cm.needThis : false, cm.thisSerialize, false);

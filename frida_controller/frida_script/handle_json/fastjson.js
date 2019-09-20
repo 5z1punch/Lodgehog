@@ -85,7 +85,7 @@ Java.perform(function () {
             };
             return implFunc;
         }
-        typeList = [
+        const typeList = [
             "Boolean",
             "Bytes",
             "BooleanValue",
