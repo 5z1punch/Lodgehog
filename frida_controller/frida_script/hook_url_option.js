@@ -2,9 +2,11 @@
 Java.perform(function () {
     console.log('hook URL & Uri');
     try{
-        var URL = Java.use("java.net.URL");
-        var URI = Java.use("android.net.Uri");
-        // var List = Java.use("java.util.List");
+        var javaURL = Java.use("java.net.URL");
+        var java_URI = Java.use("java.net.URI");
+        var androidURI = Java.use("android.net.Uri");
+        var stringUri = Java.use("android.net.Uri$StringUri");
+        var UrlQuerySanitizer = Java.use("android.net.UrlQuerySanitizer");        
     }
     catch (e) {
         console.error(e);
@@ -31,27 +33,83 @@ Java.perform(function () {
                     var strArray = Java.array("java.lang.String", rrr.toArray());
                     return_data = JSON.stringify(strArray);
                     break;
+                case "ValueSanitizer":
+                    return_data = rrr.getClass().toString();
+                    break;
             }
             fridaCallback("URL."+funName, 0, args, return_data, this.toString(), null);
             return rrr;
         };
         return implFun;
     }
-    const mList = [
-        ["getFragment"],
+    
+    const javaURLList = [
+        ["getAuthority"],
         ["getHost"],
-        ["getLastPathSegment"],
         ["getPath"],
-        ["getPathSegments", "java.util.List"],
         ["getQuery"],
+    ];
+    for(var methodi = 0; methodi < javaURLList.length; methodi++){
+        var method = javaURLList[methodi];
+        javaURL[method[0]].implementation = getParseEleImpFactory.apply(this, method);
+    }
+
+    const java_URIList = [
+        ["getHost"],
+        ["getAuthority"],
+        ["getFragment"],
+        ["getPath"],
+        ["getQuery"],
+        ["getRawAuthority"],
+        ["getRawFragment"],
+        ["getRawPath"],
+        ["getRawQuery"],
+    ];
+    for(var methodi = 0; methodi < java_URIList.length; methodi++){
+        var method = java_URIList[methodi];
+        java_URI[method[0]].implementation = getParseEleImpFactory.apply(this, method);
+    }
+    
+    const androidURIList = [
         ["getQueryParameter", "java.lang.String",[0]],
         ["getQueryParameters","java.util.List",[0]],
     ];
-    for(var methodi = 0; methodi < mList.length; methodi++){
-        var method = mList[methodi];
-        URL[method[0]].implementation = getParseEleImpFactory.apply(this, method);
+    for(var methodi = 0; methodi < androidURIList.length; methodi++){
+        var method = androidURIList[methodi];
+        androidURI[method[0]].implementation = getParseEleImpFactory.apply(this, method);
     }
 
-    URI.parse.implementation = hookFactory("URI", "parse", [0], false, false, undefined, false);
-    URI.$init.overload("java.lang.String").implementation = hookFactory("URI", "$init", [0], false, false, undefined, false);
+    const stringUriList = [
+        ["getHost"],
+        ["getAuthority"],
+        ["getFragment"],
+        ["getPath"],
+        ["getQuery"],
+        ["getEncodedAuthority"],
+        ["getEncodedFragment"],
+        ["getEncodedPath"],
+        ["getEncodedQuery"],
+        ["getLastPathSegment"],
+        // ["getPathSegments", "java.util.List"],
+    ];
+    for(var methodi = 0; methodi < stringUriList.length; methodi++){
+        var method = stringUriList[methodi];
+        stringUri[method[0]].implementation = getParseEleImpFactory.apply(this, method);
+    }
+    androidURI.parse.implementation = hookFactory("android.net.Uri", "parse", [0], false, false, undefined, false);
+    javaURL.$init.overload("java.net.URL","java.lang.String", "java.net.URLStreamHandler").implementation = hookFactory("java.net.URL", "$init", [1], false, false, undefined, false);
+    java_URI.$init.overload("java.lang.String").implementation = hookFactory("java.net.URI", "$init", [0], false, false, undefined, false);
+    UrlQuerySanitizer.$init.overload("java.lang.String").implementation = hookFactory("android.net.UrlQuerySanitizer", "$init", [0], false, false, undefined, false);
+    UrlQuerySanitizer.parseQuery.implementation = hookFactory("android.net.UrlQuerySanitizer", "parseQuery", [0], false, false, undefined, false);
+    UrlQuerySanitizer.parseUrl.implementation = hookFactory("android.net.UrlQuerySanitizer", "parseUrl", [0], false, false, undefined, false);
+    const uqsList = [
+        ["getEffectiveValueSanitizer", "ValueSanitizer", [0]],
+        ["getValue", "java.lang.String", [0]],
+        ["getValueSanitizer", "ValueSanitizer", [0]],
+        ["hasParameter", "java.lang.String", [0]],
+    ];
+    for(var methodi = 0; methodi < uqsList.length; methodi++){
+        var method = uqsList[methodi];
+        UrlQuerySanitizer[method[0]].implementation = getParseEleImpFactory.apply(this, method);
+    }
 });

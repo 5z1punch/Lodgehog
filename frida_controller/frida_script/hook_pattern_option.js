@@ -13,6 +13,7 @@ Java.perform(function () {
     }
     const cmMap = [{
         class: Pattern,
+        tag: "Pattern",
         methods: [
             {
                 name: "compile",
@@ -32,7 +33,7 @@ Java.perform(function () {
                 thisSerialize: thisSerialize,
             },
             {
-                name: "matcher",
+                name: "matches",
                 overload: ['java.lang.String','java.lang.CharSequence'],
                 argsPos: [0, 1],
             },
@@ -58,14 +59,5 @@ Java.perform(function () {
             },
         ],
     },];
-    for(var cmi = 0; cmi < cmMap.length ; cmi++){
-        var cm = cmMap[cmi];
-        for(var methodi = 0; methodi < cm.methods.length; methodi++){
-            var method = cm.methods[methodi];
-            if(method.overload){
-                cm.class[method.name].overload.apply(this, cm.overload).implementation = hookFactory(
-                    "Pattern", cm.argsPos, false, cm.needThis ? cm.needThis : false, cm.thisSerialize, false);
-            }
-        }
-    }
+    hookFactoryFromMap(cmMap);
 });

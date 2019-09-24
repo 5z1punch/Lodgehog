@@ -4,7 +4,9 @@ import env
 from inject_vector.controller.logController import runCmd
 from static_analyzer import searchForJsonSDK
 import os
-import stdlog
+from loguru import logger
+import project
+from utils import debug
 
 SCRIPTPATH = os.path.join(env.FRIDAPATH, "frida_script")
 
@@ -48,13 +50,13 @@ def loads_from_list(script_list):
 def handle_method_callback(payload):
     dump_str = "\n"
     tid = payload["tid"]
-    handle = payload["handle"] if payload["handle"] else "xxxxxxxx"
-    _this = payload["_this"] if payload["_this"] else ""
+    handle = payload["handle"] if "handle" in payload and payload["handle"] else "xxxxxxxx"
+    _this = payload["_this"] if "_this" in payload and payload["_this"] else ""
     method_name = payload["method"]
     args_str = payload["data"]
-    ret_str = "= " + payload["ret"] if payload["ret"] else ""
+    ret_str = "= " + payload["ret"] if "ret" in payload and payload["ret"] else ""
     dump_str += f"[{tid}] [{handle}@{_this}]-> {method_name}({args_str}){ret_str}"
-    print(dump_str)
+    project.LOGHANDLE.write(dump_str)
 
 def on_message(message, data):
     if message['type'] == 'send':
@@ -65,7 +67,7 @@ def on_message(message, data):
             print(payload)
             print('[!] payload is not handle for now!')
     else:
-        stdlog.error_print(f"[{message}] -> {data}")
+        logger.error(f"[{message}] -> {data}")
 
 def load_scripts(process, sourceDir):
     script_text = ""
@@ -79,6 +81,11 @@ def load_scripts(process, sourceDir):
     ]
     script_text += loads_from_list(handle_name_list)
     script_text += get_handle_json_scripts(sourceDir)
+    ## just debug ##
+    # print("=============================")
+    # print(debug.dump_lines(script_text, 232, 4))
+    # print("=============================")
+    ## debug end ##
     script = process.create_script(script_text)
     script.on("message", on_message)
     script.load()

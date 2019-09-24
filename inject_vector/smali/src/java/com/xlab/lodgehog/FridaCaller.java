@@ -6,6 +6,7 @@ import android.util.Log;
 public class FridaCaller{
     public static boolean logFlag = false;
 //    public static int pid = Process.myPid();
+    public static boolean forceOffInline = false;
     public static boolean getLogFlag(){
         return logFlag;
     }
@@ -48,9 +49,13 @@ public class FridaCaller{
         }
     }
     public static void callFrida(int tid, String methodName, String returnStr, String[] paramsStrList){
-        if(logFlag){
+        if(forceOffInline){
             // de optimize
-            Log.d("lodgehog", methodName+"@"+tid);
+            int a0 = tid - 1;
+            String a1 = methodName.substring(0,2) + a0;
+            if(paramsStrList.length < returnStr.length()){
+                Log.d("lodgehog", a1 + returnStr);
+            }
         }
     }
 }

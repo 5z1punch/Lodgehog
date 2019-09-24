@@ -67,7 +67,7 @@ function hookFactory(className, hookMethod, argsPos = [], needRet = false, needT
                 argList[i] = arguments[argsPos[i]];
             }
         }
-        callbackArguments = [className + "." + hookMethod, 0, argList, ];
+        var callbackArguments = [className + "." + hookMethod, 0, argList, ];
         if(needRet){
             callbackArguments.push(retval.toString());
         }
@@ -82,6 +82,9 @@ function hookFactory(className, hookMethod, argsPos = [], needRet = false, needT
                 callbackArguments.push(this);
             }
         }
+        else{
+            callbackArguments.push(undefined);
+        }
         if(needHadle){
             callbackArguments.push(getIdHashCode(this));
         }
@@ -90,5 +93,27 @@ function hookFactory(className, hookMethod, argsPos = [], needRet = false, needT
         }
         fridaCallback.apply(this, callbackArguments);
         return retval;
+    }
+}
+
+function hookFactoryFromMap(cmMap){
+    for(var cmi = 0; cmi < cmMap.length ; cmi++){
+        var cm = cmMap[cmi];
+        var classTag = cm.tag ? cm.tag : cm.class.getClass().toString();
+        for(var methodi = 0; methodi < cm.methods.length; methodi++){
+            var method = cm.methods[methodi];
+            var handle;
+            if(method.overload){
+                handle = cm.class[method.name].overload.apply(this, method.overload);
+            }
+            else{
+                handle = cm.class[method.name];
+            }
+            handle.implementation = hookFactory(
+                classTag, method.name, method.argsPos,
+                method.needRet ? method.needRet : false, 
+                method.needThis ? method.needThis : false,
+                method.thisSerialize, false);
+        }
     }
 }

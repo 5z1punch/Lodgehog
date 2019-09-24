@@ -9,39 +9,19 @@ Java.perform(function () {
         console.log(e);
     }
 
-    JSONArray.$init.overload('java.lang.String').implementation = function(){
-        console.log("org.json.JSONArray("+arguments[0]+")");
-        return this.$init.apply(this,arguments);
-    }
-
-    JSONObject.$init.overload('java.lang.String').implementation = function(){
-        console.log("org.json.JSONObject("+arguments[0]+")");
-        return this.$init.apply(this,arguments);
-    }
+    JSONArray.$init.overload('java.lang.String').implementation = hookFactory("org.json.JSONArray", "$init", [0], false, false, undefined, false);
+    JSONObject.$init.overload('java.lang.String').implementation = hookFactory("org.json.JSONObject", "$init", [0], false, false, undefined, false);
 
     var genGetValueImpl = function(typeGot){
-        var implFunc = function(){
-            console.log("org.json.JSONObject.get"+typeGot+"("+arguments[0]+")->");
-            var rrr = this["get"+typeGot].apply(this,arguments);
-            console.log("preLineResult@"+rrr);
-            return rrr;
-        };
+        var implFunc = hookFactory("org.json.JSONObject", "get"+typeGot, [0], true, false, undefined, false);
         return implFunc;
     }
     var genOptValueImpl = function(typeGot){
-        var implFunc = function(){
-            var rrr = this["opt"+typeGot].apply(this,arguments);
-            console.log("org.json.JSONObject.opt"+typeGot+"("+arguments[0]+")->"+rrr);
-            return rrr;
-        };
+        var implFunc = hookFactory("org.json.JSONObject", "opt"+typeGot, [0], true, false, undefined, false);
         return implFunc;
     }
     var genOptValueFallbackImpl = function(typeGot){
-        var implFunc = function(){
-            var rrr = this["opt"+typeGot].apply(this,arguments);
-            console.log("org.json.JSONObject.opt"+typeGot+"("+arguments[0]+", "+arguments[1]+")->"+rrr);
-            return rrr;
-        };
+        var implFunc = hookFactory("org.json.JSONObject", "opt"+typeGot, [0, 1], true, false, undefined, false);
         return implFunc;
     }
     const typeList1 = [
@@ -63,7 +43,14 @@ Java.perform(function () {
     for (var i = 0; i < typeList2.length; i++) {
         JSONObject["get"+typeList2[i]].implementation = genGetValueImpl(typeList2[i]);
         JSONObject["opt"+typeList2[i]].overload('java.lang.String').implementation = genOptValueImpl(typeList2[i]);
-        JSONObject["opt"+typeList2[i]].overload('java.lang.String','java.lang.String').implementation = genOptValueFallbackImpl(typeList2[i]);
+        var typeOverload = "";
+        if(typeList2[i]!="String"){
+            typeOverload = typeList2[i].toLowerCase();
+        }
+        else{
+            typeOverload = "java.lang.String";
+        }
+        JSONObject["opt"+typeList2[i]].overload('java.lang.String', typeOverload).implementation = genOptValueFallbackImpl(typeList2[i]);
     }
 
 });

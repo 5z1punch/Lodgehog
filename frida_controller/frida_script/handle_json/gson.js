@@ -5,12 +5,14 @@ Java.perform(function () {
         console.log("hook com.google.gson.Gson");
         var Gson = Java.use("com.google.gson.Gson");
         Gson.fromJson.overload('java.lang.String','java.lang.Class').implementation = function(){
-            console.log("gson.Gson.fromJson("+arguments[0]+", "+arguments[1].getName()+")");
+            var arg_data = [arguments[0], arguments[1].getName()];
+            fridaCallback("gson.Gson.fromJson", 0, arg_data, undefined, undefined, undefined)        
             return this.fromJson.apply(this,arguments);
         }
 
         Gson.fromJson.overload('java.lang.String','java.lang.reflect.Type').implementation = function(){
-            console.log("gson.Gson.fromJson("+arguments[0]+", "+arguments[1].getTypeName()+")");
+            var arg_data = [arguments[0], arguments[1].getTypeName()];
+            fridaCallback("gson.Gson.fromJson", 0, arg_data, undefined, undefined, undefined)
             return this.fromJson.apply(this,arguments);
         }
     }
@@ -20,57 +22,41 @@ Java.perform(function () {
     try{
         console.log("hook com.google.gson.JsonObject");
         var JsonObject = Java.use("com.google.gson.JsonObject");
-        JsonObject.get.implementation = function(){
-            console.log("gson.JsonObject.get("+arguments[0]+")");
-            return this.get.apply(this,arguments);
+        const getList = [
+            "",
+            "AsJsonArray",
+            "AsJsonObject",
+            "AsJsonPrimitive",
+        ];
+        for(var i=0; i < getList.length; i++){
+            JsonObject["get"+getList[i]].implementation = hookFactory("gson.JsonObject", 
+            "get"+getList[i], [0], false, false, undefined, false);
         }
-        JsonObject.getAsJsonArray.implementation = function(){
-            console.log("gson.JsonObject.getAsJsonArray("+arguments[0]+")");
-            return this.getAsJsonArray.apply(this,arguments);
-        }
-        JsonObject.getAsJsonObject.implementation = function (){
-            console.log("gson.JsonObject.getAsJsonObject("+arguments[0]+")");
-            return this.getAsJsonObject.apply(this,arguments);
-        }
-        JsonObject.getAsJsonPrimitive.implementation = function(){
-            console.log("gson.JsonObject.getAsJsonPrimitive("+arguments[0]+")");
-            return this.getAsJsonPrimitive.apply(this,arguments);
-        }
-        JsonObject.has.implementation = function(){
-            var rrr = this.has.apply(this,arguments);
-            console.log("gson.JsonObject.has("+arguments[0]+")->"+rrr);
-            return rrr;
-        }
+        JsonObject.has.implementation = hookFactory("gson.JsonObject", "has", [0], true, false, undefined, false);
     }catch(e){
         console.log("warning: handled exception->"+e);
     }
     try{
         console.log("hook com.google.gson.JsonParser");
         var JsonParser = Java.use("com.google.gson.JsonParser");
-        JsonParser.parse.overload("java.lang.String").implementation = function(){
-            console.log("gson.JsonParser.parse("+arguments[0]+")");
-            return this.parse.apply(this,arguments);
-        }
+        JsonParser.parse.overload("java.lang.String").implementation = hookFactory("gson.JsonParser", 
+        "parse", [0], false, false, undefined, false);
     }catch(e){
         console.log("warning: handled exception->"+e);
     }
     try{
         console.log("hook com.google.gson.JsonStreamParser");
         var JsonStreamParser = Java.use("com.google.gson.JsonStreamParser");
-        JsonStreamParser.$init.overload("java.lang.String").implementation = function(){
-            console.log("gson.JsonStreamParser("+arguments[0]+")");
-            return this.$init.apply(this,arguments);
-        }
+        JsonStreamParser.$init.overload("java.lang.String").implementation = hookFactory("gson.JsonStreamParser", 
+        "$init", [0], false, false, undefined, false);
     }catch(e){
         console.log("warning: handled exception->"+e);
     }
     try{
         console.log("hook com.google.gson.TypeAdapter");
         var TypeAdapter = Java.use("com.google.gson.TypeAdapter");
-        TypeAdapter.fromJson.overload("java.lang.String").implementation = function(){
-            console.log("gson.TypeAdapter("+arguments[0]+")");
-            return this.fromJson.apply(this,arguments);
-        }
+        TypeAdapter.fromJson.overload("java.lang.String").implementation = hookFactory("gson.TypeAdapter", 
+        "fromJson", [0], false, false, undefined, false);
     }catch(e){
         console.log("warning: handled exception->"+e);
     }
