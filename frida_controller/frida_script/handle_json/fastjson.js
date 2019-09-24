@@ -36,18 +36,18 @@ Java.perform(function () {
         },];
         hookFactoryFromMap(FastJson_cmMap);
         FastJson.parseObject.overload('java.lang.String', 'java.lang.reflect.Type', 'int', '[Lcom.alibaba.fastjson.parser.Feature;').implementation = function(){
-            var arg_data = [arguments[0], arguments[1].getTypeName()];
+            var arg_data = [arguments[0], checkReflectType(arguments[1])];
             fridaCallback("fastjson.JSON.parseObject", 0, arg_data, undefined, undefined, undefined)
             return this.parseObject.apply(this,arguments);
         }
         FastJson.parseObject.overload('java.lang.String','java.lang.reflect.Type','com.alibaba.fastjson.parser.ParserConfig','com.alibaba.fastjson.parser.deserializer.ParseProcess','int', '[Lcom.alibaba.fastjson.parser.Feature;').implementation = function(){
-            var arg_data = [arguments[0], arguments[1].getTypeName(), arguments[4]];
+            var arg_data = [arguments[0], checkReflectType(arguments[1]), arguments[4]];
             fridaCallback("fastjson.JSON.parseObject", 0, arg_data, undefined, undefined, undefined)
             return this.parseObject.apply(this,arguments);
         }
         FastJson.parseArray.overload('java.lang.String','java.lang.Class').implementation = function(){
-            var arg_data = [arguments[0], arguments[1].getTypeName()];
-            fridaCallback("fastjson.JSON.parseObject", 0, arg_data, undefined, undefined, undefined)
+            var arg_data = [arguments[0], arguments[1].getName()];
+            fridaCallback("fastjson.JSON.parseArray", 0, arg_data, undefined, undefined, undefined)
             return this.parseArray.apply(this,arguments);
         }
     }
@@ -81,12 +81,12 @@ Java.perform(function () {
         }
         try{
                 JSONObject.getObject.overload('java.lang.String','java.lang.reflect.Type').implementation = function(){
-                    var arg_data = [arguments[0], arguments[1].getTypeName()];
+                    var arg_data = [arguments[0], checkReflectType(arguments[1])];
                     fridaCallback("fastjson.JSONObject.getObject", 0, arg_data, undefined, undefined, undefined)        
                     return this.getObject.apply(this,arguments);
                 }
                 JSONObject.getObject.overload('java.lang.String','com.alibaba.fastjson.TypeReference').implementation = function(){
-                    var arg_data = [arguments[0], arguments[1].getType().getTypeName()];
+                    var arg_data = [arguments[0], arguments[1].getType().getClass().toString()];
                     fridaCallback("fastjson.JSONObject.getObject", 0, arg_data, undefined, undefined, undefined)        
                     return this.getObject.apply(this,arguments);
                 }

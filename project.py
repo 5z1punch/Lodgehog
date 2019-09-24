@@ -18,7 +18,7 @@ RS_DIR = "repack_smali_dir"
 A_DIR = "app_dir"
 OAT = "oat_path"
 
-LOGHANDLE = open(os.path.join(env.LOGPATH, str(int(time.time()))+".frida.log"), "w")
+LOGHANDLE = open(os.path.join(env.LOGPATH, str(int(time.time()))+".frida.log"), "w", encoding="UTF-8")
 
 if os.path.exists(env.PROJECTJSON):
     with open(env.PROJECTJSON) as pjfile:

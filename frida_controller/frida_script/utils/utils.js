@@ -1,3 +1,4 @@
+const NULLTOKEN = "`null`";
 function getSdkVersion(){
     var buffer = Memory.alloc(8);
     var keyBuffer = Memory.alloc(32);
@@ -7,6 +8,29 @@ function getSdkVersion(){
     __system_property_get(keyBuffer,buffer);
     var versionStr = buffer.readCString();
     return parseInt(versionStr);
+}
+
+function checkReflectType(typeObj){
+    if(Java.available){
+        var objClazz;
+        if(typeObj.getClass){
+            objClazz = typeObj.getClass();
+        }
+        else{
+            objClazz = typeObj;
+        }
+        // const objClass = Java.use("java.lang.Object");
+        var clazzClass = Java.use("java.lang.Class");
+        try{
+            obj = Java.cast(objClazz, clazzClass);
+            return obj.getName();
+        }
+        catch (e) {
+            console.error(e);
+            console.error("[x] this Type obj is not Class, return null token");
+        }
+    }
+    return NULLTOKEN;
 }
 
 function fridaCallback(method, tid, arg_data, ret_data, handle_data, handle){
@@ -20,13 +44,14 @@ function fridaCallback(method, tid, arg_data, ret_data, handle_data, handle){
     else if(arg_data.constructor==Array){
         for(var argi = 0; argi < arg_data.length ; argi++){
             var arg = arg_data[argi];
-            data += arg.toString()+", ";
+            data += arg!=null ? arg.toString() : NULLTOKEN;
+            data += ", ";
         }
         if(data){
             data = data.substring(0, data.length-2);
         }
     }
-    else{
+    else if(arg_data!=null){
         data = arg_data.toString();
     }
     send({
@@ -69,7 +94,12 @@ function hookFactory(className, hookMethod, argsPos = [], needRet = false, needT
         }
         var callbackArguments = [className + "." + hookMethod, 0, argList, ];
         if(needRet){
-            callbackArguments.push(retval.toString());
+            if(retval!=null){
+                callbackArguments.push(retval.toString());
+            }
+            else{
+                callbackArguments.push(NULLTOKEN);
+            }
         }
         else{
             callbackArguments.push(undefined);

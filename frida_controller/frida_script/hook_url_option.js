@@ -97,7 +97,13 @@ Java.perform(function () {
         stringUri[method[0]].implementation = getParseEleImpFactory.apply(this, method);
     }
     androidURI.parse.implementation = hookFactory("android.net.Uri", "parse", [0], false, false, undefined, false);
-    javaURL.$init.overload("java.net.URL","java.lang.String", "java.net.URLStreamHandler").implementation = hookFactory("java.net.URL", "$init", [1], false, false, undefined, false);
+    javaURL.$init.overload("java.net.URL","java.lang.String", "java.net.URLStreamHandler").implementation = 
+    function(){
+        const retval = this.$init.overload("java.net.URL","java.lang.String", "java.net.URLStreamHandler").apply(this, arguments);
+        fridaCallback("java.net.URL.$init", 0, [arguments[1]], undefined, undefined, undefined);
+        return retval;
+    }
+    // hookFactory("java.net.URL", "$init", [1], false, false, undefined, false);
     java_URI.$init.overload("java.lang.String").implementation = hookFactory("java.net.URI", "$init", [0], false, false, undefined, false);
     UrlQuerySanitizer.$init.overload("java.lang.String").implementation = hookFactory("android.net.UrlQuerySanitizer", "$init", [0], false, false, undefined, false);
     UrlQuerySanitizer.parseQuery.implementation = hookFactory("android.net.UrlQuerySanitizer", "parseQuery", [0], false, false, undefined, false);

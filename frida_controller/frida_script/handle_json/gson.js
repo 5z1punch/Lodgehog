@@ -11,7 +11,7 @@ Java.perform(function () {
         }
 
         Gson.fromJson.overload('java.lang.String','java.lang.reflect.Type').implementation = function(){
-            var arg_data = [arguments[0], arguments[1].getTypeName()];
+            var arg_data = [arguments[0], checkReflectType(arguments[1])];
             fridaCallback("gson.Gson.fromJson", 0, arg_data, undefined, undefined, undefined)
             return this.fromJson.apply(this,arguments);
         }
