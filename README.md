@@ -12,3 +12,6 @@
 - [ ] log 格式处理
 - [ ] mask class generator
 - [ ] 简化运行流程（方便调试）
+
+## ISSUES
+- [ ] lief 加载 150M 以上的bin时，使用内存会超过800M，可能导致python申请内存失败

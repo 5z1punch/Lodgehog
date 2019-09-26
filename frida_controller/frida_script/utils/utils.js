@@ -13,16 +13,16 @@ function getSdkVersion(){
 function checkReflectType(typeObj){
     if(Java.available){
         var objClazz;
-        if(typeObj.getClass){
+        try{
             objClazz = typeObj.getClass();
         }
-        else{
+        catch (e) {
             objClazz = typeObj;
         }
         // const objClass = Java.use("java.lang.Object");
         var clazzClass = Java.use("java.lang.Class");
         try{
-            obj = Java.cast(objClazz, clazzClass);
+            var obj = Java.cast(objClazz, clazzClass);
             return obj.getName();
         }
         catch (e) {

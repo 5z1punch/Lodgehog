@@ -1,4 +1,4 @@
-DEBUG = false;
+global.DEBUG = false;
 Java.perform(function() {
     global.JExc = Java.use('java.lang.Exception');
     global.JLLog = Java.use('android.util.Log');

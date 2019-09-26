@@ -72,15 +72,16 @@ def on_message(message, data):
 def load_scripts(process, sourceDir):
     script_text = ""
     handle_name_list = [
+        "utils/debug.js",
         "utils/utils.js",
         "utils/init.js",
         "frida_caller.js",
         "hook_pattern_option.js",
-        # "hook_url_option.js",
+        "hook_url_option.js",
         "hook_text_option.js",
     ]
     script_text += loads_from_list(handle_name_list)
-    # script_text += get_handle_json_scripts(sourceDir)
+    script_text += get_handle_json_scripts(sourceDir)
     ## just debug ##
     # print("=============================")
     # print(debug.dump_lines(script_text, 232, 4))

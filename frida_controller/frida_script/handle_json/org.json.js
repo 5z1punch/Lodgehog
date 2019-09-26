@@ -9,6 +9,11 @@ Java.perform(function () {
         console.log(e);
     }
 
+    /**
+     * frida bug JSONArray.$init hook will ANR 
+     * even if it is not called.
+     * STATUS: ignore, just for OnePlus one with 7.1.2
+     */
     JSONArray.$init.overload('java.lang.String').implementation = hookFactory("org.json.JSONArray", "$init", [0], false, false, undefined, false);
     JSONObject.$init.overload('java.lang.String').implementation = hookFactory("org.json.JSONObject", "$init", [0], false, false, undefined, false);
 

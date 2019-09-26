@@ -43,16 +43,20 @@ Java.perform(function () {
         return implFun;
     }
     
-    const javaURLList = [
-        ["getAuthority"],
-        ["getHost"],
-        ["getPath"],
-        ["getQuery"],
-    ];
-    for(var methodi = 0; methodi < javaURLList.length; methodi++){
-        var method = javaURLList[methodi];
-        javaURL[method[0]].implementation = getParseEleImpFactory.apply(this, method);
-    }
+    /*
+    * java.net.URL.toString will call method below.
+    * so these hook will cause recursive call
+    */
+    // const javaURLList = [
+    //     ["getAuthority"],
+    //     ["getHost"],
+    //     ["getPath"],
+    //     ["getQuery"],
+    // ];
+    // for(var methodi = 0; methodi < javaURLList.length; methodi++){
+    //     var method = javaURLList[methodi];
+    //     javaURL[method[0]].implementation = getParseEleImpFactory.apply(this, method);
+    // }
 
     const java_URIList = [
         ["getHost"],
@@ -97,6 +101,12 @@ Java.perform(function () {
         stringUri[method[0]].implementation = getParseEleImpFactory.apply(this, method);
     }
     androidURI.parse.implementation = hookFactory("android.net.Uri", "parse", [0], false, false, undefined, false);
+    /* 
+    * frida bug
+    * java.net.URL.$init arg type can't be identified correctly
+    * so use overload to call origin method.
+    * STATUS: frida server 12.6.11 , call origin method with overload.
+    */
     javaURL.$init.overload("java.net.URL","java.lang.String", "java.net.URLStreamHandler").implementation = 
     function(){
         const retval = this.$init.overload("java.net.URL","java.lang.String", "java.net.URLStreamHandler").apply(this, arguments);
@@ -104,6 +114,13 @@ Java.perform(function () {
         return retval;
     }
     // hookFactory("java.net.URL", "$init", [1], false, false, undefined, false);
+    
+    /* 
+    * frida bug
+    * java.net.URI.$init hook will crash or ANR the app
+    * even if it is not called.
+    * STATUS: ignore, just for OnePlus one with 7.1.2
+    */ 
     java_URI.$init.overload("java.lang.String").implementation = hookFactory("java.net.URI", "$init", [0], false, false, undefined, false);
     UrlQuerySanitizer.$init.overload("java.lang.String").implementation = hookFactory("android.net.UrlQuerySanitizer", "$init", [0], false, false, undefined, false);
     UrlQuerySanitizer.parseQuery.implementation = hookFactory("android.net.UrlQuerySanitizer", "parseQuery", [0], false, false, undefined, false);
