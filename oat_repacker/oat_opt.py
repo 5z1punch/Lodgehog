@@ -3,6 +3,7 @@ import os
 from loguru import logger
 import env
 from oat_repacker import pack_helper
+import hashlib
 
 def recover_permission(file_path):
     ch_command = f"chown system {file_path} && chgrp system {file_path} && chmod 644 {file_path}"
@@ -33,6 +34,7 @@ def replace_base_odex(oat_path, app_dir, repack_oat):
             adb.exec_shell(f"rm {repack_odex_remote}")
             # recover base.apk
             if adb.exec_shell(f"mv {app_dir}/base.apk.bak {app_dir}/base.apk")[0]:
+                adb.exec_shell(f"touch -acmr {app_dir}/base.apk {oat_path}")
                 return True
     logger.error(f"replace base odex failed")
     return False
@@ -46,3 +48,24 @@ def inject_oat(app_dir, oat_path, package_name, repack_apk, origin_oat):
                 logger.success("inject payload odex success")
                 return output_path, patched_odex_path
     return None
+
+def repack_odex_check(oat_path, repack_oat):
+    status, origin_md5 = adb.exec_shell(f"md5sum {oat_path}")
+    # print(origin_md5)
+    if status:
+        with open(repack_oat, "rb") as f:
+            repack_md5 = hashlib.md5(f.read()).hexdigest()
+            if repack_md5 in origin_md5:
+                return True
+            else:
+                return False
+
+def replace_odex_only(app_dir, oat_path, repack_oat):
+    if adb.push_file(repack_oat):
+        repack_odex_remote = '/sdcard/'+os.path.basename(repack_oat)
+        if adb.exec_shell(f"cp {repack_odex_remote} {oat_path}")[0]:
+            adb.exec_shell(f"rm {repack_odex_remote}")
+            adb.exec_shell(f"touch -acmr {app_dir}/base.apk {oat_path}")
+            return True
+    logger.error(f"replace base odex failed")
+    return False

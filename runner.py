@@ -60,6 +60,11 @@ def main():
     else:
         repack_odex = project.PROPERTY[project.R_ODEX]
         repack_patched_odex = project.PROPERTY[project.RP_ODEX]
+        logger.info("Check the md5 of odex between device and local")
+        if not oat_opt.repack_odex_check(oat_path, repack_patched_odex):
+            logger.warning("md5 is different, Please Terminate the app and press enter to replace odex")
+            input()
+            oat_opt.replace_odex_only(app_dir, oat_path, repack_patched_odex)
     # setup app manually
     logger.info("Please setup your app manually.and wait for ")
     logger.info("And wait for stable running to reduce dirty data")

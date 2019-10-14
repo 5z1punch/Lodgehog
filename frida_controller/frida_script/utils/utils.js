@@ -11,26 +11,55 @@ function getSdkVersion(){
 }
 
 function checkReflectType(typeObj){
-    if(Java.available){
-        var objClazz;
-        try{
-            objClazz = typeObj.getClass();
-        }
-        catch (e) {
-            objClazz = typeObj;
-        }
-        // const objClass = Java.use("java.lang.Object");
+    // public static Type canonicalize(Type type) {
+    //     if (type instanceof Class) {
+    //       Class<?> c = (Class<?>) type;
+    //       return c.isArray() ? new GenericArrayTypeImpl(canonicalize(c.getComponentType())) : c;
+      
+    //     } else if (type instanceof ParameterizedType) {
+    //       ParameterizedType p = (ParameterizedType) type;
+    //       return new ParameterizedTypeImpl(p.getOwnerType(),
+    //           p.getRawType(), p.getActualTypeArguments());
+      
+    //     } else if (type instanceof GenericArrayType) {
+    //       GenericArrayType g = (GenericArrayType) type;
+    //       return new GenericArrayTypeImpl(g.getGenericComponentType());
+      
+    //     } else if (type instanceof WildcardType) {
+    //       WildcardType w = (WildcardType) type;
+    //       return new WildcardTypeImpl(w.getUpperBounds(), w.getLowerBounds());
+      
+    //     } else {
+    //       // type is either serializable as-is or unsupported
+    //       return type;
+    //     }
+    // }
+
+    // Type instance :
+    // http://androidxref.com/7.1.2_r36/xref/libcore/luni/src/main/java/libcore/reflect/
+    //      GenericArrayTypeImpl.java
+    //      ParameterizedTypeImpl.java
+    //      TypeVariableImpl.java
+    //      WildcardTypeImpl.java
+
+    if(!Java.available){
+        return NULLTOKEN;
+    }
+    if(typeObj.$className == "java.lang.Class"){
         var clazzClass = Java.use("java.lang.Class");
         try{
-            var obj = Java.cast(objClazz, clazzClass);
+            var obj = Java.cast(typeObj, clazzClass);
             return obj.getName();
         }
         catch (e) {
-            console.error(e);
+            console.error("[x] checkReflectType: " + e);
             console.error("[x] this Type obj is not Class, return null token");
         }
     }
-    return NULLTOKEN;
+    else{
+        // TODO
+        return NULLTOKEN;
+    }
 }
 
 function fridaCallback(method, tid, arg_data, ret_data, handle_data, handle){
