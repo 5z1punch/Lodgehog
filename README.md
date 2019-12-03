@@ -16,3 +16,4 @@
 
 ## ISSUES
 - [ ] lief 加载 150M 以上的bin时，使用内存会超过800M，可能导致 **python32** 申请内存失败
+- [ ] win 环境下，python 通过 subprocess 调用 adb 命令，可能发生 pipe 管道阻塞，导致程序卡住。
