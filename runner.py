@@ -12,6 +12,7 @@ import traceback
 opt_tmp = os.path.join(os.path.dirname(os.path.realpath(__file__)),"tmp")
 
 def main():
+    print("usage: python runner.py path_to_app.apk app_package_name java_package_name_for_monitor_split_by_comma")
     apk_path = sys.argv[1]
     package_name = sys.argv[2]
     apk_filename = os.path.basename(apk_path)
@@ -23,7 +24,8 @@ def main():
     # AXML parser & get target_java_packages
     pass
     # inject log
-    target_java_packages = ["com.immomo.momo"]
+    # target_java_packages = ["com.grammarly"]
+    target_java_packages = sys.argv[3].split(",")
     repack_smali_dir = smali_dir + "_repack"
     project.PROPERTY[project.RS_DIR] = repack_smali_dir
     if injector.DEBUG:

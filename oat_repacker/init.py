@@ -34,11 +34,12 @@ def deploy_app(apk_path, package_name):
             return None
         for i in range(2):
             status, exec_ret = adb.exec_shell(f"find {app_dir}/oat/ -name base.odex")
-            if status:
+            if exec_ret and exec_ret.strip() and status:
                 oat_path = exec_ret.strip()
                 break
-            elif not status or exec_ret.strip()=="":
+            else:
                 if i==0:
+                    logger.info("base.odex does not exist, reset base.odex")
                     adb.oat_compile(package_name)
                 else:
                     logger.error(f"can't complile oat for {package_name}")
